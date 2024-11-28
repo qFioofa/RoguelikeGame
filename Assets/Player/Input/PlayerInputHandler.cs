@@ -1,0 +1,41 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PlayerInputHandler : MonoBehaviour{
+    private CharacterController controller;
+    [SerializeField] private Vector3 playerVelocity;
+    private bool isGrounded;
+    [SerializeField] private float speed = 5f;
+    [SerializeField] private float jumpHight = 3f;
+    [SerializeField] private float gravity = -2f;
+    [SerializeField] private readonly float ConstGravity = -2;
+
+    void Start(){
+        controller = GetComponent<CharacterController>();
+    }
+
+    void Update(){
+        isGrounded = controller.isGrounded;
+    }
+
+    public void ProcessMove(Vector2 input){
+        Vector3 moveDiraction = Vector3.zero;
+        moveDiraction.x = input.x;
+        moveDiraction.z = input.y;
+        controller.Move(transform.TransformDirection(moveDiraction)*speed*Time.deltaTime);
+        playerVelocity.y+=gravity*Time.deltaTime;
+
+        if(isGrounded && playerVelocity.y<0){
+            playerVelocity.y = ConstGravity;
+        }
+        controller.Move(playerVelocity * Time.deltaTime);
+    }
+
+    public void  Jump(){
+        if(!isGrounded) return;
+
+        playerVelocity.y = Mathf.Sqrt(jumpHight * -3.0f * gravity);
+    }
+
+}
