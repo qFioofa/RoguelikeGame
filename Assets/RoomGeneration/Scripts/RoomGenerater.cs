@@ -72,7 +72,6 @@ namespace RoomGeneratorWrapper{
             for (int i = 0; i < NoiseCapasity; i++) { 
                 for (int j=0; j < NoiseCapasity; j++) {
                     roomsIndexArray[i,j] = Mathf.FloorToInt(Mathf.Lerp(0, roomsListLen-1, (float) map[i,j]));
-                    Debug.Log(roomsIndexArray[i,j]);
                 }
             }
         }

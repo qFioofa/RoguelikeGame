@@ -9,10 +9,12 @@ public class RoomAttributes : MonoBehaviour{
 
     public Transform Entry{
         get {return entry;}
+        set {entry = value;}
     }
 
     public Transform Exit{
         get {return exit;}
+        set {exit = value;}
     }
 
     void Start(){
@@ -23,7 +25,6 @@ public class RoomAttributes : MonoBehaviour{
     public void Setup(){
         Start();
     }
-
     public void InitEntry(string entryTag = "RoomEntry"){
         foreach(Transform inst in transform){
             if(inst.CompareTag(entryTag)){
@@ -43,6 +44,4 @@ public class RoomAttributes : MonoBehaviour{
         }
         exit = null;
     }
-
-
 }

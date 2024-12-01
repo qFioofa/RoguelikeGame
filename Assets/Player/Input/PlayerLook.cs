@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerLook : MonoBehaviour{
-
     [SerializeField] private Camera Camera;
+    public Camera Camera_{
+        get{return Camera;}
+    }
     private float xRotation = 0f;
     [SerializeField] private float xSensitivity = 10f;
     [SerializeField] private float ySensitivity = 10f;

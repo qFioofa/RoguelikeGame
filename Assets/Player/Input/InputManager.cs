@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class InputManager : MonoBehaviour{
     [SerializeField] private PlayerInput playerInput;
-    private PlayerInput.OnFootActions onFootActions;
+    public PlayerInput.OnFootActions onFootActions;
     private PlayerLook playerLook;
     private PlayerInputHandler playerInputHandler;
     void Awake(){
