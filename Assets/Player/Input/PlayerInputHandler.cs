@@ -11,12 +11,18 @@ public class PlayerInputHandler : MonoBehaviour{
     [SerializeField] private float gravity = -2f;
     [SerializeField] private readonly float ConstGravity = -2;
 
+    [Header("Footstep Sound")]
+    [SerializeField] private float footstepInterval = 0.5f;
+    [SerializeField] private AudioClip footStepSound;
+    private float footstepTimer = 0f;
+
     void Start(){
         controller = GetComponent<CharacterController>();
     }
 
     void Update(){
         isGrounded = controller.isGrounded;
+        HandleFootsteps();
     }
 
     public void ProcessMove(Vector2 input){
@@ -36,6 +42,20 @@ public class PlayerInputHandler : MonoBehaviour{
         if(!isGrounded) return;
 
         playerVelocity.y = Mathf.Sqrt(jumpHight * -3.0f * gravity);
+    }
+
+    private void HandleFootsteps(){
+        if (isGrounded && controller.velocity.magnitude > 0f){
+            footstepTimer += Time.deltaTime;
+
+            if (footstepTimer >= footstepInterval){
+                SoundFXManager.PlaySoundClipForce(footStepSound,transform);
+                footstepTimer = 0f;
+            }
+        }
+        else{
+            footstepTimer = 0f;
+        }
     }
 
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 public class DoorHandler : MonoBehaviour{
     private readonly string IsOpenTag = "IsOpen";
     [SerializeField] private Transform exit;
+    [SerializeField] private AudioClip audioClip;
     private RoomHandler roomHandler;
     private bool IsOpen;
     public bool isOpen{
@@ -38,6 +39,7 @@ public class DoorHandler : MonoBehaviour{
     }
 
     private void Animations(){
+        SoundFXManager.PlaySoundClipForce(audioClip,transform);
         transform.GetComponent<Animator>().SetBool(IsOpenTag,IsOpen);
     }
 

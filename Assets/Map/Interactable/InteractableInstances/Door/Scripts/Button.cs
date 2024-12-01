@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class Button : Interactable{
     [SerializeField] private DoorHandler doorHandler;
+    [SerializeField] private AudioClip audioClip;
+
+    [SerializeField] private AudioClip audioClipTriggerd;
     private bool triggert;
 
     void Start(){
@@ -17,10 +20,12 @@ public class Button : Interactable{
             return;
         }
         doorHandler.Open();
+        SoundFXManager.PlaySoundClipForce(audioClip,transform);
         triggert = true;
     }
 
     private void AlreadyOpened(){
+        SoundFXManager.PlaySoundClipForce(audioClipTriggerd,transform);
         Debug.Log("The door is already triggerd");
     }
 }
