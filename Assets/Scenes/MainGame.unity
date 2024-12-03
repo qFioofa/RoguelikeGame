@@ -182,8 +182,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: New Text
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: af4c491da85b3c4468c9ea18239d3a3b, type: 2}
+  m_sharedMaterial: {fileID: -5195808718175749849, guid: af4c491da85b3c4468c9ea18239d3a3b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -362,6 +362,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &739109467 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4429972195475519227, guid: a56d38388375ffb42ac2b1fb7a60932f, type: 3}
+  m_PrefabInstance: {fileID: 9108299689584379083}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a121fd526ac7914faf429c644420799, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &913951277
 GameObject:
   m_ObjectHideFlags: 0
@@ -706,10 +717,18 @@ PrefabInstance:
       propertyPath: GranadeWeapon
       value: 
       objectReference: {fileID: 1064814500}
+    - target: {fileID: 1936962474, guid: 48fa37d5bb388d9418cc1784d41eddea, type: 3}
+      propertyPath: defaultFirstDraw
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4522618592733574793, guid: 48fa37d5bb388d9418cc1784d41eddea, type: 3}
       propertyPath: textMeshProUGUI
       value: 
       objectReference: {fileID: 72234680}
+    - target: {fileID: 4522618592733574794, guid: 48fa37d5bb388d9418cc1784d41eddea, type: 3}
+      propertyPath: layerMask.m_Bits
+      value: 192
+      objectReference: {fileID: 0}
     - target: {fileID: 4522618592733574803, guid: 48fa37d5bb388d9418cc1784d41eddea, type: 3}
       propertyPath: m_Name
       value: Player
@@ -758,7 +777,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1936962474, guid: 48fa37d5bb388d9418cc1784d41eddea, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 48fa37d5bb388d9418cc1784d41eddea, type: 3}
 --- !u!1001 &9108299689584379083
 PrefabInstance:
@@ -767,6 +787,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3089189096325702621, guid: a56d38388375ffb42ac2b1fb7a60932f, type: 3}
+      propertyPath: doorHandler
+      value: 
+      objectReference: {fileID: 739109467}
     - target: {fileID: 9108299689309852949, guid: a56d38388375ffb42ac2b1fb7a60932f, type: 3}
       propertyPath: m_Name
       value: RoomWrapper
