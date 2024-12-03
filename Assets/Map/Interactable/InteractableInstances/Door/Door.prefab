@@ -84,6 +84,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: f51c959dcacf4924eaf9764bd89a2744, type: 3}
     - target: {fileID: 2337102542733698834, guid: 31fba11d28910ac498a3f434e78ac46d, type: 3}
+      propertyPath: doorHandler
+      value: 
+      objectReference: {fileID: 6988719719500243147}
+    - target: {fileID: 2337102542733698834, guid: 31fba11d28910ac498a3f434e78ac46d, type: 3}
       propertyPath: audioClipTriggerd
       value: 
       objectReference: {fileID: 8300000, guid: 3021d24ea617d1c459b023ac7098742c, type: 3}
@@ -98,6 +102,10 @@ PrefabInstance:
     - target: {fileID: 2337102542733698835, guid: 31fba11d28910ac498a3f434e78ac46d, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2337102542733698839, guid: 31fba11d28910ac498a3f434e78ac46d, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2337102542818553248, guid: 31fba11d28910ac498a3f434e78ac46d, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -188,6 +196,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 7afc4fd18b0325f4395b9cfdc061cffa, type: 2}
     - target: {fileID: 4020134749310939700, guid: 31fba11d28910ac498a3f434e78ac46d, type: 3}
+      propertyPath: exit
+      value: 
+      objectReference: {fileID: 6284360755942690109}
+    - target: {fileID: 4020134749310939700, guid: 31fba11d28910ac498a3f434e78ac46d, type: 3}
       propertyPath: audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 524aa734ba01a084b9856cd5c3ca8547, type: 3}
@@ -217,3 +229,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31fba11d28910ac498a3f434e78ac46d, type: 3}
+--- !u!4 &6284360755942690109 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 405479362, guid: 31fba11d28910ac498a3f434e78ac46d, type: 3}
+  m_PrefabInstance: {fileID: 6284360756346852095}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6988719719500243147 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4020134749310939700, guid: 31fba11d28910ac498a3f434e78ac46d, type: 3}
+  m_PrefabInstance: {fileID: 6284360756346852095}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a121fd526ac7914faf429c644420799, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

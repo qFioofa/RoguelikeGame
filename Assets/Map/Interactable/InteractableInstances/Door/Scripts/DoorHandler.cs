@@ -7,40 +7,42 @@ public class DoorHandler : MonoBehaviour{
     [SerializeField] private Transform exit;
     [SerializeField] private AudioClip audioClip;
     private RoomHandler roomHandler;
+    private Animator animator;
     private bool IsOpen;
     public bool isOpen{
         get{ return IsOpen; }
         set{ IsOpen = value; }
     }
+    public RoomHandler RoomHandler{
+        get { return roomHandler; }
+    }
     private bool GeneratedRoom;
     void Start(){
+        animator = GetComponent<Animator>();
         getRoomHandler();
         InitExit();
     }
-    public bool Open(){
+    public void Open(){
         isOpen = true;
         GenerateRoom();
         Animations();
-        return isOpen;
     }
-
-    public bool Close(){
+    public void Close(){
         isOpen = false;
+        roomHandler.isRoomCleared = false;
         Animations();
         DeletePrevRoom();
-        return isOpen;
     }
     public void DeletePrevRoom(){
         roomHandler.DeletePrevRoom();
     }
     private void GenerateRoom(){
-        if(GeneratedRoom) return;
         roomHandler.generateNextRoom(exit);
     }
 
     private void Animations(){
         SoundFXManager.PlaySoundClipForce(audioClip,transform);
-        transform.GetComponent<Animator>().SetBool(IsOpenTag,IsOpen);
+        animator.SetBool(IsOpenTag,IsOpen);
     }
 
     private void getRoomHandler(string RoomWrapperTag = "RoomWrapper"){

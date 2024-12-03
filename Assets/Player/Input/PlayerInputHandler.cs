@@ -12,8 +12,9 @@ public class PlayerInputHandler : MonoBehaviour{
     [SerializeField] private readonly float ConstGravity = -2;
 
     [Header("Footstep Sound")]
-    [SerializeField] private float footstepInterval = 0.5f;
-    [SerializeField] private AudioClip footStepSound;
+    [SerializeField] private float footstepInterval = 0.1f;
+    [SerializeField] private AudioClip[] footStepSounds;
+    private int footStepPtr = 0;
     private float footstepTimer = 0f;
 
     void Start(){
@@ -49,13 +50,20 @@ public class PlayerInputHandler : MonoBehaviour{
             footstepTimer += Time.deltaTime;
 
             if (footstepTimer >= footstepInterval){
-                SoundFXManager.PlaySoundClipForce(footStepSound,transform);
+                SoundFXManager.PlaySoundClipForce(getAudioStep(),transform);
                 footstepTimer = 0f;
             }
         }
         else{
             footstepTimer = 0f;
         }
+    }
+
+    private AudioClip getAudioStep(){
+        AudioClip audio_r = footStepSounds[footStepPtr++];
+        if(footStepPtr>=footStepSounds.Length) footStepPtr = 0;
+
+        return audio_r;
     }
 
 }

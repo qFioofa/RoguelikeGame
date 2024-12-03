@@ -12,10 +12,23 @@ public class RoomHandler : MonoBehaviour{
     [SerializeField] private GameObject currentRoom;
     [SerializeField] private GameObject previusRoom;
     [SerializeField] private GameObject nextRoom;
+    [SerializeField] private bool IsRoomGenerated = false;
+    [SerializeField] private bool RoomCleared;
+    public bool isRoomGenerated{
+        get{ return IsRoomGenerated; }
+    }
+    public bool isRoomCleared{
+        get { return RoomCleared; }
+        set {
+            IsRoomGenerated = false; 
+            RoomCleared = value; 
+        }
+    }
     public GameObject CurrentRoom{
         get{ return currentRoom; }
     }
     void Start(){
+        isRoomCleared = true;
         setWrapper();
         roomGenerator.Setup(Seed);
         previusRoom = null;
@@ -44,12 +57,11 @@ public class RoomHandler : MonoBehaviour{
         nextRoom.transform.rotation = exit.rotation;
 
         nextRoom.transform.position += exit.position - roomAttributes.Entry.position;
+        IsRoomGenerated = true;
     }
-
     public void DeletePrevRoom(){
         Destroy(previusRoom);
     }
-
     private void setWrapper(string wrapperTag = "RoomWrapper"){
         RoomWrapper = GameObject.FindGameObjectWithTag(wrapperTag);
     }

@@ -670,6 +670,134 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Weapons"",
+            ""id"": ""ae7d5a6d-0eda-4cf7-8456-9a8bd1b08b63"",
+            ""actions"": [
+                {
+                    ""name"": ""Melee"",
+                    ""type"": ""Button"",
+                    ""id"": ""d0811fcb-2f88-4080-b38b-4925d292e999"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Granade"",
+                    ""type"": ""Button"",
+                    ""id"": ""fe702523-aa17-4828-8e01-5e73e283549c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""0e9eadeb-6df9-4375-a03f-290bb0a59c6e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""First"",
+                    ""type"": ""Button"",
+                    ""id"": ""d56b4821-756d-4e33-a283-c31d32b508a5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Second"",
+                    ""type"": ""Button"",
+                    ""id"": ""1ecb1ad2-4680-4612-84fd-bad16e3c3434"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shoot"",
+                    ""type"": ""Value"",
+                    ""id"": ""ead1419e-46d7-49f5-baf5-75687a5b82f6"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""aed492d7-4169-4077-86ad-dfe69a91cbd7"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Melee"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a55eb6e8-11ed-4e69-9350-5b7f7dd3b9ae"",
+                    ""path"": ""<Keyboard>/g"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Granade"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""17c82d5b-601d-4d7a-8bbb-89ec598a6121"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""07abf6d6-b897-4579-a522-2361faf00834"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""First"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ec6f8658-b71b-4dc2-8c31-3715324d901a"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Second"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ab6748d4-f3b4-4437-9455-4e732d770a3c"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -692,6 +820,14 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_UI_RightClick = m_UI.FindAction("RightClick", throwIfNotFound: true);
         m_UI_TrackedDevicePosition = m_UI.FindAction("TrackedDevicePosition", throwIfNotFound: true);
         m_UI_TrackedDeviceOrientation = m_UI.FindAction("TrackedDeviceOrientation", throwIfNotFound: true);
+        // Weapons
+        m_Weapons = asset.FindActionMap("Weapons", throwIfNotFound: true);
+        m_Weapons_Melee = m_Weapons.FindAction("Melee", throwIfNotFound: true);
+        m_Weapons_Granade = m_Weapons.FindAction("Granade", throwIfNotFound: true);
+        m_Weapons_Reload = m_Weapons.FindAction("Reload", throwIfNotFound: true);
+        m_Weapons_First = m_Weapons.FindAction("First", throwIfNotFound: true);
+        m_Weapons_Second = m_Weapons.FindAction("Second", throwIfNotFound: true);
+        m_Weapons_Shoot = m_Weapons.FindAction("Shoot", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -937,6 +1073,92 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         }
     }
     public UIActions @UI => new UIActions(this);
+
+    // Weapons
+    private readonly InputActionMap m_Weapons;
+    private List<IWeaponsActions> m_WeaponsActionsCallbackInterfaces = new List<IWeaponsActions>();
+    private readonly InputAction m_Weapons_Melee;
+    private readonly InputAction m_Weapons_Granade;
+    private readonly InputAction m_Weapons_Reload;
+    private readonly InputAction m_Weapons_First;
+    private readonly InputAction m_Weapons_Second;
+    private readonly InputAction m_Weapons_Shoot;
+    public struct WeaponsActions
+    {
+        private @PlayerInput m_Wrapper;
+        public WeaponsActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Melee => m_Wrapper.m_Weapons_Melee;
+        public InputAction @Granade => m_Wrapper.m_Weapons_Granade;
+        public InputAction @Reload => m_Wrapper.m_Weapons_Reload;
+        public InputAction @First => m_Wrapper.m_Weapons_First;
+        public InputAction @Second => m_Wrapper.m_Weapons_Second;
+        public InputAction @Shoot => m_Wrapper.m_Weapons_Shoot;
+        public InputActionMap Get() { return m_Wrapper.m_Weapons; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(WeaponsActions set) { return set.Get(); }
+        public void AddCallbacks(IWeaponsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_WeaponsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_WeaponsActionsCallbackInterfaces.Add(instance);
+            @Melee.started += instance.OnMelee;
+            @Melee.performed += instance.OnMelee;
+            @Melee.canceled += instance.OnMelee;
+            @Granade.started += instance.OnGranade;
+            @Granade.performed += instance.OnGranade;
+            @Granade.canceled += instance.OnGranade;
+            @Reload.started += instance.OnReload;
+            @Reload.performed += instance.OnReload;
+            @Reload.canceled += instance.OnReload;
+            @First.started += instance.OnFirst;
+            @First.performed += instance.OnFirst;
+            @First.canceled += instance.OnFirst;
+            @Second.started += instance.OnSecond;
+            @Second.performed += instance.OnSecond;
+            @Second.canceled += instance.OnSecond;
+            @Shoot.started += instance.OnShoot;
+            @Shoot.performed += instance.OnShoot;
+            @Shoot.canceled += instance.OnShoot;
+        }
+
+        private void UnregisterCallbacks(IWeaponsActions instance)
+        {
+            @Melee.started -= instance.OnMelee;
+            @Melee.performed -= instance.OnMelee;
+            @Melee.canceled -= instance.OnMelee;
+            @Granade.started -= instance.OnGranade;
+            @Granade.performed -= instance.OnGranade;
+            @Granade.canceled -= instance.OnGranade;
+            @Reload.started -= instance.OnReload;
+            @Reload.performed -= instance.OnReload;
+            @Reload.canceled -= instance.OnReload;
+            @First.started -= instance.OnFirst;
+            @First.performed -= instance.OnFirst;
+            @First.canceled -= instance.OnFirst;
+            @Second.started -= instance.OnSecond;
+            @Second.performed -= instance.OnSecond;
+            @Second.canceled -= instance.OnSecond;
+            @Shoot.started -= instance.OnShoot;
+            @Shoot.performed -= instance.OnShoot;
+            @Shoot.canceled -= instance.OnShoot;
+        }
+
+        public void RemoveCallbacks(IWeaponsActions instance)
+        {
+            if (m_Wrapper.m_WeaponsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IWeaponsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_WeaponsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_WeaponsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public WeaponsActions @Weapons => new WeaponsActions(this);
     public interface IOnFootActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -956,5 +1178,14 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnRightClick(InputAction.CallbackContext context);
         void OnTrackedDevicePosition(InputAction.CallbackContext context);
         void OnTrackedDeviceOrientation(InputAction.CallbackContext context);
+    }
+    public interface IWeaponsActions
+    {
+        void OnMelee(InputAction.CallbackContext context);
+        void OnGranade(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
+        void OnFirst(InputAction.CallbackContext context);
+        void OnSecond(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
     }
 }
