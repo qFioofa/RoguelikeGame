@@ -6,6 +6,10 @@ public class Knife : WeaponBehavier {
     public override void Update(){
         base.Update();
     }
+
+    public override void Shoot() {
+        isShooting = true;
+    }
     public override void ShootHandler(){
         animator.SetTrigger("MidSlash");
     }

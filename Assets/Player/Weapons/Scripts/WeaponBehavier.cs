@@ -48,13 +48,9 @@ public class WeaponBehavier : MonoBehaviour {
     public virtual void Reload(){}
 
     public virtual void ReloadHandler() {
-        // Calculate how much ammo is needed to fill the magazine
         int needToFill = Mathf.Clamp(weaponData.magCapacity - weaponData.currentAmmo, 0, weaponData.magCapacity);
-        
-        // Check how much ammo can actually be filled from the backpack
         int canFill = Mathf.Min(needToFill, weaponData.backPackAmmo);
 
-        // Update the current ammo and the backpack ammo
         weaponData.currentAmmo += canFill;
         weaponData.backPackAmmo -= canFill;
     }

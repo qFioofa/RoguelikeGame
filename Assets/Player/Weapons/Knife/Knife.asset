@@ -16,10 +16,10 @@ MonoBehaviour:
   damage: 0
   maxDistance: 0
   currentAmmo: 0
-  magSize: 0
+  backPackAmmo: 0
   magCapacity: 0
   fireRate: 0
   MagEmpty: {fileID: 0}
   Draw: {fileID: 8300000, guid: 77e8f7a5da7c18445b835ec3c069f63b, type: 3}
   Reload: []
-  Shoot: {fileID: 8300000, guid: 2d66df613a936da48b144d666fdc8fe0, type: 3}
+  Shoot: {fileID: 8300000, guid: 1a7b0cb3c655d3d488471c7a2be852ff, type: 3}
