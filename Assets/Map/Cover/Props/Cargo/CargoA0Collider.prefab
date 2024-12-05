@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: bc84bc3e95ede6f47a9e34322599b6d2, type: 3}
       propertyPath: m_Name
-      value: CargoA0 (1)
+      value: CargoA0Collider
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: bc84bc3e95ede6f47a9e34322599b6d2, type: 3}
+      propertyPath: m_TagString
+      value: Metal
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: bc84bc3e95ede6f47a9e34322599b6d2, type: 3}
       propertyPath: m_RootOrder

@@ -16,9 +16,9 @@ MonoBehaviour:
   damage: 10
   maxDistance: 100
   currentAmmo: 30
-  backPackAmmo: 90
+  backPackAmmo: 3409
   magCapacity: 30
-  fireRate: 0.1
+  fireRate: 0.075
   MagEmpty: {fileID: 8300000, guid: 0ec3ef77a375cf94e88e91b5c92f8dd8, type: 3}
   Draw: {fileID: 8300000, guid: 6f7e6c0b4b8eb8044869be7da9fcbe06, type: 3}
   Reload:

@@ -350,6 +350,7 @@ GameObject:
   - component: {fileID: 4522618592733574793}
   - component: {fileID: 1009726729}
   - component: {fileID: 1009726747}
+  - component: {fileID: 980038412}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -470,12 +471,32 @@ MonoBehaviour:
   speed: 10
   jumpHight: 1
   gravity: -9.8
-  footstepInterval: 0.5
-  footStepSounds:
+  baseStepInterval: 0.25
+  sandSound:
   - {fileID: 8300000, guid: 9870df62e54bb1048aa4f48748a34240, type: 3}
   - {fileID: 8300000, guid: 654986dc44465f348b0392a3b06e01fa, type: 3}
   - {fileID: 8300000, guid: 41334bf930eb77340b71c76bdf559193, type: 3}
   - {fileID: 8300000, guid: 62d197a1fa783da4b89628376978355f, type: 3}
+  MetalSound:
+  - {fileID: 8300000, guid: c4437896263e2104ba4ca0b3c3a88639, type: 3}
+  - {fileID: 8300000, guid: 652f422ff5f616847ac32581038a1eab, type: 3}
+  - {fileID: 8300000, guid: ba45024cc805679429dd4ba01775949d, type: 3}
+  - {fileID: 8300000, guid: 0ba5e2e73d188d24fa242d42724c6c33, type: 3}
+  WoodSound:
+  - {fileID: 8300000, guid: b93273a6dcd8a834399fe660fa0d9fb1, type: 3}
+  - {fileID: 8300000, guid: ec3fbca992e2a1f44bd734a2cb60cda3, type: 3}
+  - {fileID: 8300000, guid: dfdd0460b7f01254c981a3171e62c173, type: 3}
+  - {fileID: 8300000, guid: a79a220d0095f134990a49c7bf097321, type: 3}
+  StoneSound:
+  - {fileID: 8300000, guid: 320409dbfd107f84bb877c34bea3aef1, type: 3}
+  - {fileID: 8300000, guid: 4a6a6209f5205364db56d55906d11e17, type: 3}
+  - {fileID: 8300000, guid: 4a6a6209f5205364db56d55906d11e17, type: 3}
+  - {fileID: 8300000, guid: 0b7219175fff83346a1c22fa9b50f826, type: 3}
+  UnknownSound:
+  - {fileID: 8300000, guid: 10bc5eb9bdcab764ba8be20747caf2f3, type: 3}
+  - {fileID: 8300000, guid: c2d9989ed4f65af4e908c149a18c8a67, type: 3}
+  - {fileID: 8300000, guid: c141329ef3424d4418cbdd5733965707, type: 3}
+  - {fileID: 8300000, guid: 1473972c72a493f47af1a9d1a928507d, type: 3}
 --- !u!114 &4522618592733574795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -552,6 +573,21 @@ MonoBehaviour:
   SecondWeapon: {fileID: 5985773310782585546}
   MeleeWeapon: {fileID: 3393270774310465151}
   GranadeWeapon: {fileID: 2361232116949302416}
+--- !u!114 &980038412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4522618592733574803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c00f4fbb46eb0b7498b57890c8eee0de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HealthLimit: 100
+  _Health: 100
+  _Money: 0
 --- !u!1001 &1367692451477995594
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100006, guid: 9bbf6bb9a298f734394e7eb668a9d06f, type: 3}
       propertyPath: m_Name
-      value: Windmill
+      value: WindmillCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: 9bbf6bb9a298f734394e7eb668a9d06f, type: 3}
+      propertyPath: m_TagString
+      value: Metal
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 9bbf6bb9a298f734394e7eb668a9d06f, type: 3}
       propertyPath: m_RootOrder

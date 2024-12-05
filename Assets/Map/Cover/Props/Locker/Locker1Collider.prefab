@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100002, guid: 7b588d47215c10740bc4d5913633d62b, type: 3}
       propertyPath: m_Name
-      value: Locker1
+      value: Locker1Collider
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 7b588d47215c10740bc4d5913633d62b, type: 3}
+      propertyPath: m_TagString
+      value: Metal
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 7b588d47215c10740bc4d5913633d62b, type: 3}
       propertyPath: m_RootOrder

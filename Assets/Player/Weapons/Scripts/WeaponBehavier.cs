@@ -1,51 +1,40 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
-public class WeaponBehavier : MonoBehaviour {
+public class WeaponBehavior : MonoBehaviour {
     [SerializeField] protected WeaponData weaponData;
     [SerializeField] protected Animator animator;
     protected bool isShooting;
-    protected float fireRateTimePassed = 0;
     protected bool isReloading;
-    public bool IsShooting{
-        get{ return isShooting; }
-    }
-    public bool IsReloading{
-        get{ return isReloading; }
-    }
+    protected float LastShotTime;
 
-    public virtual void Update() {
-        fireRateTimePassed += Time.deltaTime;
-
-        if (isShooting) ShootHandler();
+    public bool IsShooting {
+        get { return isShooting; }
     }
 
-    void Start(){
+    public bool IsReloading {
+        get { return isReloading; }
+    }
+
+    void Start() {
+        LastShotTime = Time.time;
         animator = GetComponent<Animator>();
     }
 
-    public virtual void Shoot(){
-        if(!CanShoot()) {
-            SoundFXManager.PlaySoundClipForce(weaponData.MagEmpty, transform);
-            return;
-        }
+    public virtual void Update() {}
+
+    public virtual void Shoot() {
         isShooting = true;
     }
 
-    public virtual void ShootHandler() {
-        Debug.Log(weaponData.currentAmmo);
-        weaponData.currentAmmo = Mathf.Clamp(weaponData.currentAmmo-1, 0, weaponData.magCapacity);
-        Debug.Log(weaponData.currentAmmo);
-    }
+    public virtual void ShootHandler() {}
 
-    public virtual void ShootCancel(){
+    public virtual void ShootCancel() {
         isShooting = false;
     }
 
-    public virtual void Reload(){}
+    public virtual void Reload() {}
 
     public virtual void ReloadHandler() {
         int needToFill = Mathf.Clamp(weaponData.magCapacity - weaponData.currentAmmo, 0, weaponData.magCapacity);
@@ -55,19 +44,24 @@ public class WeaponBehavier : MonoBehaviour {
         weaponData.backPackAmmo -= canFill;
     }
 
-
-
     public virtual void ReloadDone() {
         ReloadHandler();
     }
 
-    public virtual void Draw(){}
+    public virtual void AddOneMag() {
+        weaponData.backPackAmmo += weaponData.magCapacity;
+        Debug.Log($"Added ammo. Backpack ammo: {weaponData.backPackAmmo}, Current ammo: {weaponData.currentAmmo}, Magazine capacity: {weaponData.magCapacity}");
+    }
+
+    public virtual void Draw() {}
 
     public virtual void SetActive(bool active) {
         gameObject.SetActive(active);
     }
 
     public virtual bool CanShoot() {
-        return weaponData.currentAmmo > 0 && !isReloading && fireRateTimePassed >= weaponData.fireRate;
+        return weaponData.currentAmmo > 0 && !isReloading && weaponData.fireRate + LastShotTime <=Time.time;
     }
+
+    public virtual void ResetAnimatorSpeed(){}
 }

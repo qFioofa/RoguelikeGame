@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100002, guid: ad4029399eea3c94cad2a94ea38b8637, type: 3}
       propertyPath: m_Name
-      value: Fence1
+      value: Fence1Collider
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: ad4029399eea3c94cad2a94ea38b8637, type: 3}
+      propertyPath: m_TagString
+      value: Metal
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: ad4029399eea3c94cad2a94ea38b8637, type: 3}
       propertyPath: m_RootOrder

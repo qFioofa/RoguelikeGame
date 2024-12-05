@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Knife : WeaponBehavier {
+public class Knife : WeaponBehavior {
     public override void Update(){
         base.Update();
     }

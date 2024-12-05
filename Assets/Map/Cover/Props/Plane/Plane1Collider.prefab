@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100002, guid: b1766c5263fa4eb4ab0661bea258d7b8, type: 3}
       propertyPath: m_Name
-      value: Plane1
+      value: Plane1Collider
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: b1766c5263fa4eb4ab0661bea258d7b8, type: 3}
+      propertyPath: m_TagString
+      value: Metal
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: b1766c5263fa4eb4ab0661bea258d7b8, type: 3}
       propertyPath: m_RootOrder

@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100002, guid: edbcb73bf34ea9142a779640e2fb444e, type: 3}
       propertyPath: m_Name
-      value: Tank
+      value: TankCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: edbcb73bf34ea9142a779640e2fb444e, type: 3}
+      propertyPath: m_TagString
+      value: Metal
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: edbcb73bf34ea9142a779640e2fb444e, type: 3}
       propertyPath: m_RootOrder

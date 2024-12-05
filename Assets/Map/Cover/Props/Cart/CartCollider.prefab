@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 7cd293d8f69b3fa4292d2bf6b4e60304, type: 3}
       propertyPath: m_Name
-      value: Cart
+      value: CartCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 7cd293d8f69b3fa4292d2bf6b4e60304, type: 3}
+      propertyPath: m_TagString
+      value: Metal
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 7cd293d8f69b3fa4292d2bf6b4e60304, type: 3}
       propertyPath: m_RootOrder

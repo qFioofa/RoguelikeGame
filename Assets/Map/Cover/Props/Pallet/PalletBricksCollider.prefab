@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: f1c46e283923d3b4ca79c5661c5277f6, type: 3}
       propertyPath: m_Name
-      value: PalletBricks
+      value: PalletBricksCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: f1c46e283923d3b4ca79c5661c5277f6, type: 3}
+      propertyPath: m_TagString
+      value: Wood
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: f1c46e283923d3b4ca79c5661c5277f6, type: 3}
       propertyPath: m_RootOrder

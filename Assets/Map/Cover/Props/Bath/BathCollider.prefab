@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: ae8352c51c6124747aa9e8a7374b86af, type: 3}
       propertyPath: m_Name
-      value: Bath
+      value: BathCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ae8352c51c6124747aa9e8a7374b86af, type: 3}
+      propertyPath: m_TagString
+      value: Metal
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ae8352c51c6124747aa9e8a7374b86af, type: 3}
       propertyPath: m_RootOrder

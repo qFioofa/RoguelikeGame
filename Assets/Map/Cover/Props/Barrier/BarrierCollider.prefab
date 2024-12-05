@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: b68c72ed5517705458d50fb6e935c659, type: 3}
       propertyPath: m_Name
-      value: Barrier (15)
+      value: BarrierCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: b68c72ed5517705458d50fb6e935c659, type: 3}
+      propertyPath: m_TagString
+      value: Stone
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: b68c72ed5517705458d50fb6e935c659, type: 3}
       propertyPath: m_RootOrder

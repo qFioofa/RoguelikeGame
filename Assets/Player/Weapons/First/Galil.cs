@@ -2,15 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Galil : WeaponBehavier {
+public class Galil : WeaponBehavior {
 
     public override void Update(){
+        if(isShooting) ShootHandler();
         base.Update();
     }
-    public override void ShootHandler(){
-        base.ShootHandler();
-        animator.SetTrigger("Shoot");
+
+    public override void Shoot(){
+        base.Shoot();
     }
+    public override void ShootHandler() {
+        if (weaponData.fireRate + LastShotTime > Time.time) return;
+        if (weaponData.currentAmmo <= 0) {
+            SoundFXManager.PlaySoundClipForcePlayer(weaponData.MagEmpty);
+            return;
+        }
+
+        weaponData.currentAmmo = Mathf.Clamp(weaponData.currentAmmo - 1, 0, weaponData.magCapacity);
+        LastShotTime = Time.time;
+        
+        animator.speed = 1f / weaponData.fireRate;
+        animator.SetTrigger("Shoot");
+        base.ShootHandler();
+    }
+
+    public override void ResetAnimatorSpeed(){
+        animator.speed = 1f;
+    }
+
     public void ShootSound(){
         SoundFXManager.PlaySoundClipForce(weaponData.Shoot, transform);
     }

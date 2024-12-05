@@ -15,10 +15,10 @@ public class WeaponHandler : MonoBehaviour {
     [Header("Start")]
     [SerializeField] private WeaponType defaultFirstDraw = WeaponType.First;
     [Header("Weapons")]
-    [SerializeField] private WeaponBehavier FirstWeapon;
-    [SerializeField] private WeaponBehavier SecondWeapon;
-    [SerializeField] private WeaponBehavier MeleeWeapon;
-    [SerializeField] private WeaponBehavier GranadeWeapon;
+    [SerializeField] private WeaponBehavior FirstWeapon;
+    [SerializeField] private WeaponBehavior SecondWeapon;
+    [SerializeField] private WeaponBehavior MeleeWeapon;
+    [SerializeField] private WeaponBehavior GranadeWeapon;
     private WeaponType currentWeapon;
 
     void Start(){
@@ -28,10 +28,10 @@ public class WeaponHandler : MonoBehaviour {
     }
 
     private void SetWeapons(string FirstWeapomTag = "FirstWeapon", string SecondWeaponTag = "SecondWeapon", string MeleeWeaponTag = "MeleeWeapon", string GranadeWeaponTag = "GranadeWeapon"){
-        FirstWeapon = GameObject.FindGameObjectWithTag(FirstWeapomTag)?.GetComponent<WeaponBehavier>();
-        SecondWeapon = GameObject.FindGameObjectWithTag(SecondWeaponTag)?.GetComponent<WeaponBehavier>();
-        MeleeWeapon = GameObject.FindGameObjectWithTag(MeleeWeaponTag)?.GetComponent<WeaponBehavier>();
-        GranadeWeapon = GameObject.FindGameObjectWithTag(GranadeWeaponTag)?.GetComponent<WeaponBehavier>();
+        FirstWeapon = GameObject.FindGameObjectWithTag(FirstWeapomTag)?.GetComponent<WeaponBehavior>();
+        SecondWeapon = GameObject.FindGameObjectWithTag(SecondWeaponTag)?.GetComponent<WeaponBehavior>();
+        MeleeWeapon = GameObject.FindGameObjectWithTag(MeleeWeaponTag)?.GetComponent<WeaponBehavior>();
+        GranadeWeapon = GameObject.FindGameObjectWithTag(GranadeWeaponTag)?.GetComponent<WeaponBehavior>();
     }
 
     private void SelectWeaponType(WeaponType wType) {
@@ -146,5 +146,11 @@ public class WeaponHandler : MonoBehaviour {
 
     public void ShootCancel(){
         ShootCancelWeapon();
+    }
+
+    public void AddOneMag(){
+        FirstWeapon.AddOneMag();
+        SecondWeapon.AddOneMag();
+        MeleeWeapon.AddOneMag();
     }
 }

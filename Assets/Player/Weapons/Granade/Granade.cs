@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Granade : WeaponBehavier {
+public class Granade : WeaponBehavior {
 
     public override void Shoot(){
         animator.SetTrigger("Trow");

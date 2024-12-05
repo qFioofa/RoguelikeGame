@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 25671eb8f306a4a40811f0705e38cc67, type: 3}
       propertyPath: m_Name
-      value: Bus
+      value: BusCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 25671eb8f306a4a40811f0705e38cc67, type: 3}
+      propertyPath: m_TagString
+      value: Metal
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 25671eb8f306a4a40811f0705e38cc67, type: 3}
       propertyPath: m_RootOrder

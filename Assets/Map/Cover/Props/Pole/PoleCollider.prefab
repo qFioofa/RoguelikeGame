@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100002, guid: ea387d40066d2eb41b26e940dcb63ea5, type: 3}
       propertyPath: m_Name
-      value: Pole
+      value: PoleCollider
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: ea387d40066d2eb41b26e940dcb63ea5, type: 3}
+      propertyPath: m_TagString
+      value: Wood
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: ea387d40066d2eb41b26e940dcb63ea5, type: 3}
       propertyPath: m_RootOrder

@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100002, guid: bb9c226855cc8584a847a9d2b0dea912, type: 3}
       propertyPath: m_Name
-      value: Electric00
+      value: Electric00Collider
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: bb9c226855cc8584a847a9d2b0dea912, type: 3}
+      propertyPath: m_TagString
+      value: Metal
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: bb9c226855cc8584a847a9d2b0dea912, type: 3}
       propertyPath: m_RootOrder
