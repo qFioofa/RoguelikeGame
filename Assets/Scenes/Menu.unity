@@ -2584,7 +2584,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1974668865}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3433,6 +3433,9 @@ MonoBehaviour:
   mainMenuCanvas: {fileID: 2123176685}
   settingsCanvas: {fileID: 1974668861}
   inputField: {fileID: 1861582207}
+  volumeSlider: {fileID: 1714023044}
+  sensitivityXSlider: {fileID: 679342585}
+  sensitivityYSlider: {fileID: 660965193}
 --- !u!1 &1716400477
 GameObject:
   m_ObjectHideFlags: 0
@@ -3785,7 +3788,7 @@ RectTransform:
   m_Children:
   - {fileID: 1714023043}
   m_Father: {fileID: 1974668865}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3984,8 +3987,8 @@ RectTransform:
   m_Children:
   - {fileID: 562163218}
   - {fileID: 1334094368}
-  - {fileID: 1960005672}
   - {fileID: 1139593831}
+  - {fileID: 1960005672}
   - {fileID: 180081842}
   - {fileID: 817270320}
   m_Father: {fileID: 0}

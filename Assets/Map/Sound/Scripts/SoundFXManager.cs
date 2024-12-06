@@ -10,7 +10,7 @@ public class SoundFXManager : MonoBehaviour{
     private bool isSoundPlaying = false;
     void Awake(){
         if (instance == null) instance = this;
-        Player = GameObject.FindWithTag("Player").transform;
+        Player = GameObject.FindWithTag("Player")?.transform;
     }
 
     public static void PlaySoundClipForce(AudioClip audioClip, Transform spawnTransform, float volume = 1.0f){

@@ -26,4 +26,3 @@ public abstract class ButtonClick : MonoBehaviour, IPointerEnterHandler, IPointe
         }
     }
 }
-

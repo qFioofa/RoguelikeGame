@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class FullShopScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
+    public GameObject pauseMenuCanvas;
+    public GameObject shopCanvas;
     void Start()
     {
         
     }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            shopCanvas.SetActive(false);
+            pauseMenuCanvas.SetActive(true);
+            Time.timeScale = 0f;
+        }
     }
 }
