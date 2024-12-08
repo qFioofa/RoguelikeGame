@@ -5,6 +5,6 @@ using UnityEngine;
 public class PickUpAmmo : PickUp {
     protected override void PickedUp() {
         playerInfo.AddOneMag();
-        base.Destroy();
+        base.PickedUp();
     }
 }

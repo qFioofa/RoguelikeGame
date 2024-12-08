@@ -13,7 +13,11 @@ public enum WeaponType {
 public class WeaponHandler : MonoBehaviour {
 
     [Header("Start")]
-    [SerializeField] private WeaponType defaultFirstDraw = WeaponType.First;
+    [SerializeField] private WeaponType defaultFirstDraw = WeaponType.Melee;
+
+    public WeaponType DefaultFirstDraw{
+        get { return defaultFirstDraw; }
+    }
     [Header("Weapons")]
     [SerializeField] private WeaponBehavior FirstWeapon;
     [SerializeField] private WeaponBehavior SecondWeapon;
@@ -54,6 +58,13 @@ public class WeaponHandler : MonoBehaviour {
                 MeleeWeapon.Draw();
                 break;
             case WeaponType.Granade:
+                WeaponData weaponData = GranadeWeapon?.WeaponData;
+                if(weaponData == null) return;
+                if(weaponData.currentAmmo <=0) {
+                    SoundFXManager.PlaySoundClipForce(weaponData.MagEmpty, transform);
+                    SelectWeaponTypeForce(defaultFirstDraw);
+                    break;
+                }
                 GranadeWeapon?.SetActive(true);
                 GranadeWeapon.Draw();
                 break;
@@ -61,6 +72,40 @@ public class WeaponHandler : MonoBehaviour {
 
         currentWeapon = wType;
     }
+
+    public void SelectWeaponTypeForce(WeaponType wType) {
+
+        SetAllActiveFalseWeapons();
+
+        switch(wType){
+            case WeaponType.First:
+                FirstWeapon?.SetActive(true);
+                FirstWeapon.Draw();
+                break;
+            case WeaponType.Second:
+                SecondWeapon?.SetActive(true);
+                SecondWeapon.Draw();
+                break;
+            case WeaponType.Melee:
+                MeleeWeapon?.SetActive(true);
+                MeleeWeapon.Draw();
+                break;
+            case WeaponType.Granade:
+                WeaponData weaponData = GranadeWeapon?.WeaponData;
+                if(weaponData == null) return;
+                if(weaponData.currentAmmo <=0) {
+                    SoundFXManager.PlaySoundClipForce(weaponData.MagEmpty, transform);
+                    SelectWeaponType(defaultFirstDraw);
+                    break;
+                }
+                GranadeWeapon?.SetActive(true);
+                GranadeWeapon.Draw();
+                break;
+        }
+
+        currentWeapon = wType;
+    }
+
 
     private void ReloadWeapon(){
         switch(currentWeapon){
@@ -120,37 +165,42 @@ public class WeaponHandler : MonoBehaviour {
         GranadeWeapon?.SetActive(false);
     }
 
-    public void First(){
-        SelectWeaponType(WeaponType.First);
-    }
+    public void First() => SelectWeaponType(WeaponType.First);
 
-    public void Second(){
-        SelectWeaponType(WeaponType.Second);
-    }
+    public void Second() => SelectWeaponType(WeaponType.Second);
 
-    public void Melee(){
-        SelectWeaponType(WeaponType.Melee);
-    }
+    public void Melee() => SelectWeaponType(WeaponType.Melee);
 
-    public void Granade(){
-        SelectWeaponType(WeaponType.Granade);
-    }
+    public void Granade() => SelectWeaponType(WeaponType.Granade);
 
-    public void Reload(){
-        ReloadWeapon();
-    }
+    public void Reload() => ReloadWeapon();
 
-    public void Shoot(){
-        ShootWeapon();
-    }
+    public void Shoot() => ShootWeapon();
 
-    public void ShootCancel(){
-        ShootCancelWeapon();
-    }
+    public void ShootCancel() => ShootCancelWeapon();
 
     public void AddOneMag(){
         FirstWeapon.AddOneMag();
         SecondWeapon.AddOneMag();
         MeleeWeapon.AddOneMag();
+    }
+    public WeaponData GetInfoWeapon(){
+        switch(currentWeapon){
+            case WeaponType.First: return FirstWeapon.WeaponData;
+            case WeaponType.Second: return SecondWeapon.WeaponData;
+            case WeaponType.Melee: return MeleeWeapon.WeaponData;
+            case WeaponType.Granade: return GranadeWeapon.WeaponData;
+        }
+        return null;
+    }
+
+    public Transform GetWeaponTransform(){
+        switch(currentWeapon){
+            case WeaponType.First: return FirstWeapon.transform;
+            case WeaponType.Second: return SecondWeapon.transform;
+            case WeaponType.Melee: return MeleeWeapon.transform;
+            case WeaponType.Granade: return GranadeWeapon.transform;
+        }
+        return null;
     }
 }

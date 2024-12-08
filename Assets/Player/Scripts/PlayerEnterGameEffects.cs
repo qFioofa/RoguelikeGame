@@ -31,27 +31,18 @@ public class PlayerEnterGameEffects : MonoBehaviour{
     {
         float timeElapsed = 0f;
 
-        // Determine the direction of transition
         float fromValue = startValue;
         float toValue = endValue;
-
-        // If we're going backwards, swap the values
         if (startValue > endValue)
         {
             fromValue = endValue;
             toValue = startValue;
         }
 
-        // Smoother easing function (e.g., using EaseInOutQuad)
         while (timeElapsed < duration)
         {
-            // Interpolation factor t: [0, 1] over time
             float t = timeElapsed / duration;
-
-            // Smooth transition with easing (EaseInOutQuad for example)
             float easedT = EaseInOutQuad(t);
-
-            // Lerp with the eased time factor
             float currentPixelation = Mathf.Lerp(fromValue, toValue, easedT);
             pSXPostProcessEffect.PixelationFactor = currentPixelation;
 

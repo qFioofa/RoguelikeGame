@@ -5,6 +5,7 @@ using UnityEngine;
 public class PickUp : MonoBehaviour {
     public AudioClip pickUpSound;
     public PlayerInfo playerInfo;
+    private bool PlayedSound = false;
 
     protected virtual void Start(){
         playerInfo = GameObject.FindWithTag("Player")?.GetComponent<PlayerInfo>();
@@ -12,18 +13,21 @@ public class PickUp : MonoBehaviour {
 
     public void OnTriggerEnter(Collider other){
         if (other.CompareTag("Player")){
-            PlaySound();
             PickedUp();
         }
     }
 
-    protected virtual void PickedUp(){}
+    protected virtual void PickedUp(){
+        PlaySound();
+        Destroy();
+    }
 
     protected virtual void Destroy(){
-        Destroy(gameObject);
+        Destroy(gameObject, 0.05f);
     }
 
     protected virtual void PlaySound(){
-        SoundFXManager.PlaySoundClipForcePlayer(pickUpSound);
+        if(!PlayedSound) SoundFXManager.PlaySoundClipForcePlayer(pickUpSound);
+        PlayedSound = true;
     }
 }

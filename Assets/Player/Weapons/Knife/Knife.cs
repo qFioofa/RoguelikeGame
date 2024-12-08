@@ -4,14 +4,24 @@ using UnityEngine;
 
 public class Knife : WeaponBehavior {
     public override void Update(){
+        if(isShooting) ShootHandler();
         base.Update();
     }
 
-    public override void Shoot() {
-        isShooting = true;
+    public override void Shoot(){
+        base.Shoot();
     }
-    public override void ShootHandler(){
+    public override void ShootHandler() {
+        if (weaponData.fireRate + LastShotTime > Time.time) return;
+        LastShotTime = Time.time;
+        animator.speed = 1f / weaponData.fireRate;
+
         animator.SetTrigger("MidSlash");
+        base.ShootHandler();
+    }
+
+    public override void ResetAnimatorSpeed(){
+        animator.speed = 1f;
     }
     public void MidSlashSound(){
         SoundFXManager.PlaySoundClipForce(weaponData.Shoot, transform);

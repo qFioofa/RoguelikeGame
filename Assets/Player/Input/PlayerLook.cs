@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class PlayerLook : MonoBehaviour{
     [SerializeField] private Camera Camera;
+
+    [SerializeField] private WeaponHandler weaponHandler;
+
+    void Awake(){
+        weaponHandler = GetComponent<WeaponHandler>();
+    }
     public Camera Camera_{
         get{return Camera;}
     }
     private float xRotation = 0f;
+
+    [Header("Mouse")]
     [SerializeField] private float xSensitivity = 10f;
     [SerializeField] private float ySensitivity = 10f;
     [SerializeField] private float upAngleLimit = 80f;

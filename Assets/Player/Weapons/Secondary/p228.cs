@@ -14,7 +14,8 @@ public class p228 : WeaponBehavior {
     public override void ShootHandler(){
         if(weaponData.fireRate + LastShotTime >Time.time) return;
         if(weaponData.currentAmmo <= 0){
-            SoundFXManager.PlaySoundClipForcePlayer(weaponData.MagEmpty);
+            if (!PlayedSoundOnReload) SoundFXManager.PlaySoundClipForcePlayer(weaponData.MagEmpty);
+            PlayedSoundOnReload = true;
             return;
         }
         weaponData.currentAmmo = Mathf.Clamp(weaponData.currentAmmo-1,0, weaponData.magCapacity);
@@ -26,7 +27,7 @@ public class p228 : WeaponBehavior {
     }
 
     public override void ResetAnimatorSpeed(){
-        animator.speed = 0.75f;
+        animator.speed = 1f;
     }
 
     public void ShootSound(){
@@ -42,7 +43,6 @@ public class p228 : WeaponBehavior {
     }
 
     public override void Reload(){
-        Debug.Log($"{weaponData.backPackAmmo} {weaponData.currentAmmo} {weaponData.magCapacity}");
         if (weaponData.backPackAmmo <= 0 || weaponData.currentAmmo >= weaponData.magCapacity) {
             SoundFXManager.PlaySoundClipForce(weaponData.MagEmpty, transform);
             return;

@@ -38,6 +38,7 @@ public class PlayerInputHandler : MonoBehaviour{
 
     void Update(){
         isGrounded = controller.isGrounded;
+        ProcessGravity();
     }
 
     public void ProcessMove(Vector2 input){
@@ -48,6 +49,10 @@ public class PlayerInputHandler : MonoBehaviour{
         moveDiraction.x = input.x;
         moveDiraction.z = input.y;
         controller.Move(transform.TransformDirection(moveDiraction)*speed*Time.deltaTime);
+        controller.Move(playerVelocity * Time.deltaTime);
+    }
+
+    private void ProcessGravity(){
         playerVelocity.y+=gravity*Time.deltaTime;
 
         if(isGrounded && playerVelocity.y<0){

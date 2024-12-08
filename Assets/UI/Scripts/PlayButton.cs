@@ -14,7 +14,6 @@ public class PlayButton : ButtonClick {
     
     void Start(){
         playerEnterGameEffects = mianCamera.GetComponent<PlayerEnterGameEffects>();
-        
     }
     protected override void HandleRightClick(){
         SoundFXManager.PlaySoundClipForce(audioClip,transform);

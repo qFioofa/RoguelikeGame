@@ -5,8 +5,13 @@ using UnityEngine;
 public class WeaponBehavior : MonoBehaviour {
     [SerializeField] protected WeaponData weaponData;
     [SerializeField] protected Animator animator;
+
+    public WeaponData WeaponData{
+        get { return weaponData; }
+    }
     protected bool isShooting;
     protected bool isReloading;
+    protected bool PlayedSoundOnReload;
     protected float LastShotTime;
 
     public bool IsShooting {
@@ -32,6 +37,7 @@ public class WeaponBehavior : MonoBehaviour {
 
     public virtual void ShootCancel() {
         isShooting = false;
+        PlayedSoundOnReload = false;
     }
 
     public virtual void Reload() {}
@@ -50,7 +56,6 @@ public class WeaponBehavior : MonoBehaviour {
 
     public virtual void AddOneMag() {
         weaponData.backPackAmmo += weaponData.magCapacity;
-        Debug.Log($"Added ammo. Backpack ammo: {weaponData.backPackAmmo}, Current ammo: {weaponData.currentAmmo}, Magazine capacity: {weaponData.magCapacity}");
     }
 
     public virtual void Draw() {}
@@ -62,6 +67,5 @@ public class WeaponBehavior : MonoBehaviour {
     public virtual bool CanShoot() {
         return weaponData.currentAmmo > 0 && !isReloading && weaponData.fireRate + LastShotTime <=Time.time;
     }
-
     public virtual void ResetAnimatorSpeed(){}
 }

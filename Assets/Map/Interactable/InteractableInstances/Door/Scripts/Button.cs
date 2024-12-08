@@ -2,6 +2,7 @@ using System;
 using System.CodeDom.Compiler;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Button : Interactable{
@@ -17,6 +18,7 @@ public class Button : Interactable{
             AlreadyOpened();
             return;
         }
+
         Triggered = true;
         doorHandler.Open();
         SoundFXManager.PlaySoundClipForce(audioClip,transform);
