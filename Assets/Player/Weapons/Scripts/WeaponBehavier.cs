@@ -22,7 +22,7 @@ public class WeaponBehavior : MonoBehaviour {
         get { return isReloading; }
     }
 
-    void Start() {
+    protected virtual void Start() {
         LastShotTime = Time.time;
         animator = GetComponent<Animator>();
     }

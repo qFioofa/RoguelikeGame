@@ -8,6 +8,12 @@ public class p228 : WeaponBehavior {
         base.Update();
     }
 
+    protected override void Start() {
+        base.Start();
+        SaveHandler.SaveLoad();
+        WeaponData.Copy(SaveHandler.saveData.granadeData, weaponData);
+    }
+
     public override void Shoot(){
         base.Shoot();
     }

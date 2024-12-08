@@ -65,15 +65,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc41b46a22c1d8644adb3981a3181f71, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.048
+      value: 0.112
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc41b46a22c1d8644adb3981a3181f71, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7550001
+      value: 0.954
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc41b46a22c1d8644adb3981a3181f71, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.344
+      value: -0.007
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bc41b46a22c1d8644adb3981a3181f71, type: 3}
       propertyPath: m_LocalRotation.w
@@ -384,6 +384,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -4140757398727940666, guid: bc41b46a22c1d8644adb3981a3181f71, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -4140757398727940666, guid: bc41b46a22c1d8644adb3981a3181f71, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ffd71e75edbccd2468bec5393ac83f5f, type: 2}
@@ -430,6 +434,10 @@ PrefabInstance:
     - target: {fileID: -3685533129578622713, guid: bc41b46a22c1d8644adb3981a3181f71, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -3658858254782999836, guid: bc41b46a22c1d8644adb3981a3181f71, type: 3}
+      propertyPath: m_UpdateWhenOffscreen
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -3658858254782999836, guid: bc41b46a22c1d8644adb3981a3181f71, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1193,3 +1201,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: d9144cbe36dfc3849bee985a17d21d41, type: 2}
   animator: {fileID: 5839780902122515255}
+--- !u!114 &8664956277598443329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6162109183319135561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4722a13d18b3e2446ad3e816f91dcd20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smooth: 8
+  swayMultiplier: 2

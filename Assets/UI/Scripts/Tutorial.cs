@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Tutorial : MonoBehaviour {
-    [SerializeField] private string sceneToLoad = "Tutorial";
+    [SerializeField] private string sceneToLoad = "Poligon";
     [SerializeField] private AudioClip audioClip;
     public void LoadTutorialScene() {
         Invoke("LoadSnece", audioClip.length);

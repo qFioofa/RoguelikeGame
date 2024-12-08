@@ -20,30 +20,19 @@ public class GamePlayerInfo : MonoBehaviour
     {
         HP.text = "b " + Info.Health.ToString();
         MONEY.text = "$ " + Info.Money.ToString();
-        //AMMO.text = GUNS.GetInfoWeapon().WeaponType;
-        //AMMO.text = $"{GUNS.GetInfoWeapon().currentAmmo} | {GUNS.GetInfoWeapon().backPackAmmo}";
         switch (GUNS.GetInfoWeapon().WeaponType.ToString()) {
             case "Galil":
-                {
-                    AMMO.text = "B " + $"{GUNS.GetInfoWeapon().currentAmmo} | {GUNS.GetInfoWeapon().backPackAmmo}";
-                    break;
-                }
-            
+                AMMO.text = "B " + $"{GUNS.GetInfoWeapon().currentAmmo} | {GUNS.GetInfoWeapon().backPackAmmo}";
+                break;            
             case "p228":
-                {
-                    AMMO.text = "A " + $"{GUNS.GetInfoWeapon().currentAmmo} | {GUNS.GetInfoWeapon().backPackAmmo}";
-                    break;
-                }
+                AMMO.text = "A " + $"{GUNS.GetInfoWeapon().currentAmmo} | {GUNS.GetInfoWeapon().backPackAmmo}";
+                break;
             case "":
-                {
-                    AMMO.text = "H " + $"{GUNS.GetInfoWeapon().currentAmmo} | {GUNS.GetInfoWeapon().backPackAmmo}";
-                    break;
-                }
+                AMMO.text = "H " + $"{GUNS.GetInfoWeapon().currentAmmo} | {GUNS.GetInfoWeapon().backPackAmmo}";
+                break;
             case "Knife":
-                {
-                    AMMO.text = "J";
-                    break;
-                }
+                AMMO.text = "J";
+                break;
         }
     }
 }

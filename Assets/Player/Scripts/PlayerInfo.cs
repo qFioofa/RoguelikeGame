@@ -8,7 +8,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Player_Info", menuName = "Player/Player_Info")]
 public class PlayerInfo : MonoBehaviour {
     [SerializeField] private PlayerData playerData;
-    
     private WeaponHandler weaponHandler;
 
     void Start(){

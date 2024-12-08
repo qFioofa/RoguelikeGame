@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Galil : WeaponBehavior {
+    protected override void Start() {
+        base.Start();
+        SaveHandler.SaveLoad();
+        WeaponData.Copy(SaveHandler.saveData.galilData, weaponData);
+    }
     public override void Update(){
         if(isShooting) ShootHandler();
         base.Update();

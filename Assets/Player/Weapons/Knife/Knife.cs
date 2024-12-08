@@ -7,6 +7,11 @@ public class Knife : WeaponBehavior {
         if(isShooting) ShootHandler();
         base.Update();
     }
+    protected override void Start() {
+        base.Start();
+        SaveHandler.SaveLoad();
+        WeaponData.Copy(SaveHandler.saveData.knifeData, weaponData);
+    }
 
     public override void Shoot(){
         base.Shoot();

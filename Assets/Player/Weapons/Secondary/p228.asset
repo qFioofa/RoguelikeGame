@@ -15,9 +15,9 @@ MonoBehaviour:
   WeaponType: p228
   damage: 5
   maxDistance: 100
-  currentAmmo: 13
-  backPackAmmo: 1753
-  magCapacity: 13
+  currentAmmo: 7
+  backPackAmmo: 14
+  magCapacity: 7
   fireRate: 0.25
   MagEmpty: {fileID: 8300000, guid: 0ec3ef77a375cf94e88e91b5c92f8dd8, type: 3}
   Draw: {fileID: 8300000, guid: 5ad3bca7a4bb3c44dadfc023132c0124, type: 3}

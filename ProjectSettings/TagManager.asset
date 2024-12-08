@@ -19,6 +19,7 @@ TagManager:
   - Stone
   - Unknown
   - Wood
+  - PlayerWeaponHandler
   layers:
   - Default
   - TransparentFX

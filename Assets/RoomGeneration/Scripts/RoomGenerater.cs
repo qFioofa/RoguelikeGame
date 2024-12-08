@@ -25,7 +25,7 @@ namespace RoomGeneratorWrapper{
         public void Setup(int seed, string roomsPrefabs = "RoomsPrefabs/",string roomTag = "Room"){
             SetSeed(seed);
             SetRoomsList(roomsPrefabs,roomTag);
-            noise = new PerlinNoise(NoiseCapasity,NoiseCapasity,__seed);
+            noise = new PerlinNoise(NoiseCapasity, NoiseCapasity, __seed,1, 0.1, 0.1, 100, 10);
             GenerateArray();
         }
 
@@ -69,11 +69,15 @@ namespace RoomGeneratorWrapper{
         private void GenerateArray() {
             roomsIndexArray = new int[NoiseCapasity,NoiseCapasity];
             double[,] map = noise.GetGrid();
+            string p = string.Empty;
             for (int i = 0; i < NoiseCapasity; i++) { 
                 for (int j=0; j < NoiseCapasity; j++) {
                     roomsIndexArray[i,j] = Mathf.FloorToInt(Mathf.Lerp(0, roomsListLen-1, (float) map[i,j]));
+                    p += roomsIndexArray[i,j].ToString()+ " ";
                 }
+                p +="\n";
             }
+            //Debug.Log(p);
         }
     }
 }

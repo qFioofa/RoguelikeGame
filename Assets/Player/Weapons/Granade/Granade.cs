@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Granade : WeaponBehavior {
-
-    [SerializeField] private WeaponHandler weaponHandler;
-
-    void Start(){
+    private WeaponHandler weaponHandler;
+    protected override void Start() {
+        base.Start();
         weaponHandler = GameObject.FindWithTag("Player")?.GetComponent<WeaponHandler>();
+        SaveHandler.SaveLoad();
+        WeaponData.Copy(SaveHandler.saveData.granadeData, weaponData);
     }
 
     public override void Update(){}

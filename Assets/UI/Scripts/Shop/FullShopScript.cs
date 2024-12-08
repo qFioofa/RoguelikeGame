@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using System.Transactions;
+using UnityEngine.Rendering;
 
 public class FullShopScript : MonoBehaviour {
     [Header("Reset properties")]
@@ -57,10 +58,6 @@ public class FullShopScript : MonoBehaviour {
     }
 
     public void ResetProgress(){
-        PlayerData.Copy(playerData, playerDataReset);
-        WeaponData.Copy(galilWeaponData, galilWeaponDataReset);
-        WeaponData.Copy(p228WeaponData, p228WeaponDataReset);
-        ShopData.Copy(shopData, shopDataReset);
         UpdateUI();
     }
 
