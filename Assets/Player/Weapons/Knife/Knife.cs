@@ -9,8 +9,6 @@ public class Knife : WeaponBehavior {
     }
     protected override void Start() {
         base.Start();
-        SaveHandler.SaveLoad();
-        WeaponData.Copy(SaveHandler.saveData.knifeData, weaponData);
     }
 
     public override void Shoot(){

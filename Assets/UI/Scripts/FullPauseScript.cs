@@ -6,64 +6,44 @@ using TMPro;
 
 public class FullPauseScript : MonoBehaviour
 {
+
+
+    [Header("Canvases")]
     public GameObject pauseMenuCanvas;
     public GameObject InfoCanvas;
     public GameObject DefaultCanvas;
-
     private bool isPaused = false;
-    private bool inShop = false; 
 
+    [Header("UI")]
     public TextMeshProUGUI seedText;
+    public string tutorialNameScene = "Poligon";
 
-    void Start()
-    {
+    void Start() {
         pauseMenuCanvas.SetActive(false);
         UpdateSeedText();
     }
 
-    public void UpdateSeedText()
-    {
-        seedText.text = "Seed: " + FullSettingsScript.seed.ToString();
+    public void UpdateSeedText() {
+        if(SceneManager.GetActiveScene().name ==tutorialNameScene) seedText.text = "Seed: Tutorial";
+        else seedText.text = "Seed: " + FullSettingsScript.seed.ToString();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (inShop)
-            {
-                // Если пользователь в магазине, вернуться в паузу
-                GoToPauseMenu();
-            }
-            else if (isPaused)
-            {
-                // Если пользователь в паузе, выйти из неё
-                ResumeGame();
-            }
-            else
-            {
-                // Если пользователь не в паузе, войти в паузу
-                TogglePause();
-            }
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if(isPaused) ResumeGame();
+            else TogglePause();
         }
     }
 
-    public void TogglePause()
-    {
+    public void TogglePause() {
         isPaused = !isPaused;
 
-        if (isPaused)
-        {
-            EnterPause();
-        }
-        else
-        {
-            ResumeGame();
-        }
+        if (isPaused) EnterPause();
+        else ResumeGame();
     }
 
-    public void EnterPause()
-    {
+    public void EnterPause() {
+        CursorHandler.UnHide();
         Time.timeScale = 0f;
         InfoCanvas.SetActive(false);
         DefaultCanvas.SetActive(false);
@@ -71,24 +51,18 @@ public class FullPauseScript : MonoBehaviour
         isPaused = true;
     }
 
-    public void ResumeGame()
-    {
+    public void ResumeGame() {
+        CursorHandler.Hide();
         Time.timeScale = 1f;
         pauseMenuCanvas.SetActive(false);
         DefaultCanvas.SetActive(true);
         InfoCanvas.SetActive(true);
         isPaused = false;
-        inShop = false; 
     }
 
-    public void GoToPauseMenu()
-    {
-        pauseMenuCanvas.SetActive(true);
-        inShop = false; 
-    }
+    public void GoToPauseMenu() => pauseMenuCanvas.SetActive(true);
 
-    public void GoToMainMenu()
-    {
+    public void GoToMainMenu() {
         Time.timeScale = 1f; 
         SceneManager.LoadScene("Menu");
     }

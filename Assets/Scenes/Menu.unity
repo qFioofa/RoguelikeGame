@@ -216,6 +216,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &720920037 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 123735627225079830, guid: ca50652719f08e241baaea1fb2f2d28d, type: 3}
+  m_PrefabInstance: {fileID: 123735627176832214}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &720920040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 720920037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f078726d28fcdc4fb6e34dd87a54b85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveData: {fileID: 11400000, guid: dc1dbf1bd37205f47b2531b1d122816d, type: 2}
 --- !u!1001 &747115799
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -502,6 +520,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2418714213263253952, guid: ee7786d477c6cb047a4001d072a8f39b, type: 3}
+      propertyPath: m_Value
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2418714213263253952, guid: ee7786d477c6cb047a4001d072a8f39b, type: 3}
+      propertyPath: m_MaxValue
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2418714213263253952, guid: ee7786d477c6cb047a4001d072a8f39b, type: 3}
+      propertyPath: m_MinValue
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2418714213312026480, guid: ee7786d477c6cb047a4001d072a8f39b, type: 3}
+      propertyPath: m_Value
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2418714213312026480, guid: ee7786d477c6cb047a4001d072a8f39b, type: 3}
+      propertyPath: m_MaxValue
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2418714213312026480, guid: ee7786d477c6cb047a4001d072a8f39b, type: 3}
+      propertyPath: m_MinValue
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 2418714213334371017, guid: ee7786d477c6cb047a4001d072a8f39b, type: 3}
       propertyPath: returnAmbient
       value: 
@@ -509,6 +551,14 @@ PrefabInstance:
     - target: {fileID: 2418714213447410925, guid: ee7786d477c6cb047a4001d072a8f39b, type: 3}
       propertyPath: sceneToLoad
       value: Poligon
+      objectReference: {fileID: 0}
+    - target: {fileID: 2418714214357191693, guid: ee7786d477c6cb047a4001d072a8f39b, type: 3}
+      propertyPath: m_Value
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2418714214357191693, guid: ee7786d477c6cb047a4001d072a8f39b, type: 3}
+      propertyPath: m_MaxValue
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2418714214541796150, guid: ee7786d477c6cb047a4001d072a8f39b, type: 3}
       propertyPath: mianCamera

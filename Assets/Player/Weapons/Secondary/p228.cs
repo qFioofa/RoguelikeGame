@@ -10,8 +10,6 @@ public class p228 : WeaponBehavior {
 
     protected override void Start() {
         base.Start();
-        SaveHandler.SaveLoad();
-        WeaponData.Copy(SaveHandler.saveData.granadeData, weaponData);
     }
 
     public override void Shoot(){

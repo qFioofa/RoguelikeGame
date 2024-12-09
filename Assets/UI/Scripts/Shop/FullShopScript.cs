@@ -58,6 +58,10 @@ public class FullShopScript : MonoBehaviour {
     }
 
     public void ResetProgress(){
+        PlayerData.Copy(playerData, playerDataReset);
+        WeaponData.Copy(galilWeaponData, galilWeaponDataReset);
+        WeaponData.Copy(p228WeaponData, p228WeaponDataReset);
+        ShopData.Copy(shopData, shopDataReset);
         UpdateUI();
     }
 

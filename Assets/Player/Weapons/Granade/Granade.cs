@@ -7,8 +7,6 @@ public class Granade : WeaponBehavior {
     protected override void Start() {
         base.Start();
         weaponHandler = GameObject.FindWithTag("Player")?.GetComponent<WeaponHandler>();
-        SaveHandler.SaveLoad();
-        WeaponData.Copy(SaveHandler.saveData.granadeData, weaponData);
     }
 
     public override void Update(){}

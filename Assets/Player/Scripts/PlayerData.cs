@@ -9,12 +9,11 @@ public class PlayerData : ScriptableObject {
     public int Money = 0;
 
     public static PlayerDataAttributes FromScriptableObject(PlayerData saveData) {
-        PlayerDataAttributes attributes = new PlayerDataAttributes {
+        return new PlayerDataAttributes {
             HealthLimit = saveData.HealthLimit,
             Health = saveData.Health,
             Money = saveData.Money
         };
-        return attributes;
     }
 
     public static PlayerData FromAttributes(PlayerDataAttributes saveData) {
@@ -38,12 +37,11 @@ public class PlayerDataAttributes {
     public float Health = 75f;
     public int Money = 0;
     public static PlayerDataAttributes FromScriptableObject(PlayerData saveData) {
-        PlayerDataAttributes attributes = new PlayerDataAttributes {
+        return new PlayerDataAttributes {
             HealthLimit = saveData.HealthLimit,
             Health = saveData.Health,
             Money = saveData.Money
         };
-        return attributes;
     }
 
     public static PlayerData FromAttributes(PlayerDataAttributes saveData) {

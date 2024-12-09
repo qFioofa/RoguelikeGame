@@ -7,15 +7,20 @@ public class SaveSystem : JsonService {
     public readonly string fileExtension = ".json";
     public void SaveData<T>(string relativePath, T data) {
         string directoryPath = Path.Combine(Application.persistentDataPath, relativePath);
-        if (!Directory.Exists(directoryPath)) {
-            Directory.CreateDirectory(directoryPath);
-        }
+        CreateDirectory(relativePath);
 
         string path = Path.Combine(directoryPath, $"{fileName}{fileExtension}");
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(path, json);
         Debug.Log($"Saved to {path}: {json}");
-    }   
+    }
+
+    public void CreateDirectory(string relativePath){
+        string directoryPath = Path.Combine(Application.persistentDataPath, relativePath);
+        if (!Directory.Exists(directoryPath)) {
+            Directory.CreateDirectory(directoryPath);
+        }
+    }
 
     public T LoadData<T>(string relativePath) {
         string path = Path.Combine(Application.persistentDataPath, relativePath, $"{fileName}{fileExtension}");

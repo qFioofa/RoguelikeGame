@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 [CreateAssetMenu(fileName = "Data", menuName = "Data/Save Data")]
 public class SaveData : ScriptableObject {
@@ -21,7 +22,6 @@ public class SaveData : ScriptableObject {
     public WeaponData galilWeaponDataReset;
     public WeaponData granadeWeaponDataReset;
     public ShopData shopDataReset;
-
     public static SaveDataAttributes FromScriptableObject(SaveData saveData) {
         return new SaveDataAttributes {
             playerData = PlayerDataAttributes.FromScriptableObject(saveData.playerData),
@@ -41,14 +41,14 @@ public class SaveData : ScriptableObject {
 
     public static SaveData FromAttributes(SaveDataAttributes saveDataAttributes) {
         SaveData saveData = ScriptableObject.CreateInstance<SaveData>();
-        
+
         saveData.playerData = PlayerData.FromAttributes(saveDataAttributes.playerData);
         saveData.knifeData = WeaponData.FromAttributes(saveDataAttributes.knifeData);
         saveData.p228Data = WeaponData.FromAttributes(saveDataAttributes.p228Data);
         saveData.galilData = WeaponData.FromAttributes(saveDataAttributes.galilData);
         saveData.granadeData = WeaponData.FromAttributes(saveDataAttributes.granadeData);
         saveData.shopData = ShopData.FromAttributes(saveDataAttributes.shopData);
-        
+
         saveData.playerDataReset = PlayerData.FromAttributes(saveDataAttributes.playerDataReset);
         saveData.knifeWeaponDataReset = WeaponData.FromAttributes(saveDataAttributes.knifeWeaponDataReset);
         saveData.p228WeaponDataReset = WeaponData.FromAttributes(saveDataAttributes.p228WeaponDataReset);
@@ -57,6 +57,38 @@ public class SaveData : ScriptableObject {
         saveData.shopDataReset = ShopData.FromAttributes(saveDataAttributes.shopDataReset);
 
         return saveData;
+    }
+
+    public static void Copy(SaveData source, SaveData destination) {
+        PlayerData.Copy(destination.playerData, source.playerData);
+        WeaponData.Copy(destination.knifeData, source.knifeData);
+        WeaponData.Copy(destination.p228Data, source.p228Data);
+        WeaponData.Copy(destination.galilData, source.galilData);
+        WeaponData.Copy(destination.granadeData, source.granadeData);
+        ShopData.Copy(destination.shopData, source.shopData);
+
+        WeaponData.Copy(destination.knifeWeaponDataReset, source.knifeWeaponDataReset);
+        WeaponData.Copy(destination.p228WeaponDataReset, source.p228WeaponDataReset);
+        WeaponData.Copy(destination.galilWeaponDataReset, source.galilWeaponDataReset);
+        WeaponData.Copy(destination.granadeWeaponDataReset, source.granadeWeaponDataReset);
+        ShopData.Copy(destination.shopDataReset, source.shopData);
+
+        /*
+        destination.playerData = source.playerData;
+        destination.knifeData = source.knifeData;
+        destination.p228Data = source.p228Data;
+        destination.galilData = source.galilData;
+        destination.granadeData = source.granadeData;
+        destination.shopData = source.shopData;
+        destination.playerDataReset = source.playerDataReset;
+
+        destination.knifeWeaponDataReset = source.knifeWeaponDataReset;
+        destination.p228WeaponDataReset = source.p228WeaponDataReset;
+        destination.galilWeaponDataReset = source.galilWeaponDataReset;
+        destination.granadeWeaponDataReset = source.granadeWeaponDataReset;
+
+        destination.shopDataReset = source.shopData;
+        */
     }
 
     public void Reset() {
@@ -108,14 +140,14 @@ public class SaveDataAttributes {
 
     public static SaveData FromAttributes(SaveDataAttributes saveDataAttributes) {
         SaveData saveData = ScriptableObject.CreateInstance<SaveData>();
-        
+
         saveData.playerData = PlayerData.FromAttributes(saveDataAttributes.playerData);
         saveData.knifeData = WeaponData.FromAttributes(saveDataAttributes.knifeData);
         saveData.p228Data = WeaponData.FromAttributes(saveDataAttributes.p228Data);
         saveData.galilData = WeaponData.FromAttributes(saveDataAttributes.galilData);
         saveData.granadeData = WeaponData.FromAttributes(saveDataAttributes.granadeData);
         saveData.shopData = ShopData.FromAttributes(saveDataAttributes.shopData);
-        
+
         saveData.playerDataReset = PlayerData.FromAttributes(saveDataAttributes.playerDataReset);
         saveData.knifeWeaponDataReset = WeaponData.FromAttributes(saveDataAttributes.knifeWeaponDataReset);
         saveData.p228WeaponDataReset = WeaponData.FromAttributes(saveDataAttributes.p228WeaponDataReset);
