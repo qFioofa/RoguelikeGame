@@ -323,10 +323,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuCanvas: {fileID: 7765950007875794453}
-  shopCanvas: {fileID: 0}
   InfoCanvas: {fileID: 7765950006351324829}
   DefaultCanvas: {fileID: 7765950006917778434}
   seedText: {fileID: 7765950006633286158}
+  tutorialNameScene: Poligon
 --- !u!1 &7765950006505836206
 GameObject:
   m_ObjectHideFlags: 0

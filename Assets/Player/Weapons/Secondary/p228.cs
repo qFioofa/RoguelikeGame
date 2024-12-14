@@ -1,8 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class p228 : WeaponBehavior {
+
+    private float damage = 10f;
+    private float range = 100f;
+
+    [SerializeField] private Camera fpsCamera;
     public override void Update(){
         if(isShooting) ShootHandler();
         base.Update();
@@ -21,6 +24,19 @@ public class p228 : WeaponBehavior {
             if (!PlayedSoundOnReload) SoundFXManager.PlaySoundClipForcePlayer(weaponData.MagEmpty);
             PlayedSoundOnReload = true;
             return;
+        }
+        // shooting mechanics
+        RaycastHit hit;
+
+        if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, range))
+        {
+            Debug.Log(hit.transform.name);
+
+            EnemyLife target = hit.transform.GetComponent<EnemyLife>(); // EnemyLife - script of enemy, when enemy takes damage
+            if (target != null)
+            {
+                target.TakeDamage(damage);
+            }
         }
         weaponData.currentAmmo = Mathf.Clamp(weaponData.currentAmmo-1,0, weaponData.magCapacity);
         LastShotTime = Time.time;

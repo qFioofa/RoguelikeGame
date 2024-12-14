@@ -16,7 +16,7 @@ public class Granade : WeaponBehavior {
     }
 
     public override void ShootHandler() {
-        animator.SetTrigger("Trow");
+        animator.SetTrigger("Throw");
     }
 
     public override void ShootCancel(){

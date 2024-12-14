@@ -1,10 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Galil : WeaponBehavior {
+
+    private float damage = 10f;
+    private float range = 100f;
+
+    [SerializeField] private Camera fpsCamera;
+
     protected override void Start() {
         base.Start();
+
     }
     public override void Update(){
         if(isShooting) ShootHandler();
@@ -21,7 +26,19 @@ public class Galil : WeaponBehavior {
             PlayedSoundOnReload = true;
             return;
         }
+        // shooting mechanics
+        RaycastHit hit;
 
+        if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, range))
+        {
+            Debug.Log(hit.transform.name);
+
+            EnemyLife target = hit.transform.GetComponent<EnemyLife>(); // EnemyLife - script of enemy, when enemy takes damage
+            if (target != null)
+            {
+                target.TakeDamage(damage);
+            }     
+        }
         weaponData.currentAmmo = Mathf.Clamp(weaponData.currentAmmo - 1, 0, weaponData.magCapacity);
         LastShotTime = Time.time;
         animator.speed = 1f / weaponData.fireRate;
