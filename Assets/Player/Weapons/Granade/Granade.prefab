@@ -1293,6 +1293,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponData: {fileID: 11400000, guid: 402bc4db513bb2a46b386f7a27e2ab48, type: 2}
   animator: {fileID: 622412209817075798}
+  prefab: {fileID: 2639079471067028341, guid: 7ced3571e14ff8043bdb34692d0d3d9d, type: 3}
+  offset: {x: 0.5, y: 0.5, z: 0.5}
+  throwForce: 20
 --- !u!114 &7267072717402412251
 MonoBehaviour:
   m_ObjectHideFlags: 0

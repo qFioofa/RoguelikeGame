@@ -20,6 +20,7 @@ TagManager:
   - Unknown
   - Wood
   - PlayerWeaponHandler
+  - Enemy
   layers:
   - Default
   - TransparentFX
