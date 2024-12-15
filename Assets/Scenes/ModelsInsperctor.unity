@@ -836,6 +836,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room3
       objectReference: {fileID: 0}
+    - target: {fileID: 8861188448415935177, guid: cb1cd939e6eb955438a2d7e08f3e0ce0, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb1cd939e6eb955438a2d7e08f3e0ce0, type: 3}
 --- !u!1001 &1953982913108679643
@@ -893,6 +897,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Room2
       objectReference: {fileID: 0}
+    - target: {fileID: 7346739376031457951, guid: bbac178b174393146bedcbd85a7b08d3, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbac178b174393146bedcbd85a7b08d3, type: 3}
 --- !u!1001 &2134775372080068303
@@ -902,6 +910,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6273984622257871816, guid: c0ed05949a1bc2c499dbb56c237b5fd4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2134775370509355868, guid: c0ed05949a1bc2c499dbb56c237b5fd4, type: 3}
       propertyPath: m_Materials.Array.size
       value: 0
@@ -1032,14 +1044,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4582729366683559058, guid: 328ba1761f014e04ca740486e0b6b077, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -46.23
-      objectReference: {fileID: 0}
-    - target: {fileID: 4582729366683559058, guid: 328ba1761f014e04ca740486e0b6b077, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 127.77
-      objectReference: {fileID: 0}
     - target: {fileID: 4721510334846225824, guid: 328ba1761f014e04ca740486e0b6b077, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -1083,30 +1087,6 @@ PrefabInstance:
     - target: {fileID: 4721510334846225824, guid: 328ba1761f014e04ca740486e0b6b077, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5242373286615072202, guid: 328ba1761f014e04ca740486e0b6b077, type: 3}
-      propertyPath: m_TagString
-      value: Sand
-      objectReference: {fileID: 0}
-    - target: {fileID: 5242373286824786590, guid: 328ba1761f014e04ca740486e0b6b077, type: 3}
-      propertyPath: m_TagString
-      value: Sand
-      objectReference: {fileID: 0}
-    - target: {fileID: 5242373286853090227, guid: 328ba1761f014e04ca740486e0b6b077, type: 3}
-      propertyPath: m_TagString
-      value: Sand
-      objectReference: {fileID: 0}
-    - target: {fileID: 5242373287755702037, guid: 328ba1761f014e04ca740486e0b6b077, type: 3}
-      propertyPath: m_TagString
-      value: Sand
-      objectReference: {fileID: 0}
-    - target: {fileID: 5242373287958631724, guid: 328ba1761f014e04ca740486e0b6b077, type: 3}
-      propertyPath: m_TagString
-      value: Sand
-      objectReference: {fileID: 0}
-    - target: {fileID: 5242373288037896141, guid: 328ba1761f014e04ca740486e0b6b077, type: 3}
-      propertyPath: m_TagString
-      value: Sand
       objectReference: {fileID: 0}
     - target: {fileID: 6415673465345669319, guid: 328ba1761f014e04ca740486e0b6b077, type: 3}
       propertyPath: m_Name
@@ -1349,6 +1329,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6479606716510458672, guid: c16d2ed89a2b55643b365451ec7adbcf, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8238604950359392784, guid: c16d2ed89a2b55643b365451ec7adbcf, type: 3}
       propertyPath: m_Name
       value: Room1
