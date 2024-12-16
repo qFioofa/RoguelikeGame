@@ -19,54 +19,40 @@ public class WeaponHandler : MonoBehaviour {
         get { return defaultFirstDraw; }
     }
     [Header("Weapons")]
-    [SerializeField] private WeaponBehavior FirstWeapon;
-    [SerializeField] private WeaponBehavior SecondWeapon;
-    [SerializeField] private WeaponBehavior MeleeWeapon;
-    [SerializeField] private WeaponBehavior GranadeWeapon;
+    [SerializeField]
+    private Dictionary<WeaponType, WeaponBehavior> weaponsMap = new Dictionary<WeaponType, WeaponBehavior>();
+
     private WeaponType currentWeapon;
-    void Start(){
+
+    void Start() {
         SetWeapons();
         SetAllActiveFalseWeapons();
         SelectWeaponTypeForce(defaultFirstDraw);
     }
 
-    private void SetWeapons(string FirstWeapomTag = "FirstWeapon", string SecondWeaponTag = "SecondWeapon", string MeleeWeaponTag = "MeleeWeapon", string GranadeWeaponTag = "GranadeWeapon"){
-        FirstWeapon = GameObject.FindGameObjectWithTag(FirstWeapomTag)?.GetComponent<WeaponBehavior>();
-        SecondWeapon = GameObject.FindGameObjectWithTag(SecondWeaponTag)?.GetComponent<WeaponBehavior>();
-        MeleeWeapon = GameObject.FindGameObjectWithTag(MeleeWeaponTag)?.GetComponent<WeaponBehavior>();
-        GranadeWeapon = GameObject.FindGameObjectWithTag(GranadeWeaponTag)?.GetComponent<WeaponBehavior>();
+    private void SetWeapons() {
+        weaponsMap[WeaponType.First] = GameObject.FindGameObjectWithTag("FirstWeapon")?.GetComponent<WeaponBehavior>();
+        weaponsMap[WeaponType.Second] = GameObject.FindGameObjectWithTag("SecondWeapon")?.GetComponent<WeaponBehavior>();
+        weaponsMap[WeaponType.Melee] = GameObject.FindGameObjectWithTag("MeleeWeapon")?.GetComponent<WeaponBehavior>();
+        weaponsMap[WeaponType.Granade] = GameObject.FindGameObjectWithTag("GranadeWeapon")?.GetComponent<WeaponBehavior>();
     }
 
     private void SelectWeaponType(WeaponType wType) {
-
-        if(currentWeapon == wType) return;
+        if (currentWeapon == wType) return;
 
         SetAllActiveFalseWeapons();
 
-        switch(wType){
-            case WeaponType.First:
-                FirstWeapon?.SetActive(true);
-                FirstWeapon?.Draw();
-                break;
-            case WeaponType.Second:
-                SecondWeapon?.SetActive(true);
-                SecondWeapon?.Draw();
-                break;
-            case WeaponType.Melee:
-                MeleeWeapon?.SetActive(true);
-                MeleeWeapon?.Draw();
-                break;
-            case WeaponType.Granade:
-                WeaponData weaponData = GranadeWeapon?.WeaponData;
-                if(weaponData == null) return;
-                if(weaponData.currentAmmo <=0) {
+        if (weaponsMap.TryGetValue(wType, out WeaponBehavior weapon)) {
+            if (wType == WeaponType.Granade) {
+                WeaponData weaponData = weapon?.WeaponData;
+                if (weaponData == null || weaponData.currentAmmo <= 0) {
                     SoundFXManager.PlaySoundClipForce(weaponData.MagEmpty, transform);
                     SelectWeaponTypeForce(defaultFirstDraw);
-                    break;
+                    return;
                 }
-                GranadeWeapon?.SetActive(true);
-                GranadeWeapon?.Draw();
-                break;
+            }
+            weapon?.SetActive(true);
+            weapon?.Draw();
         }
 
         currentWeapon = wType;
@@ -76,30 +62,17 @@ public class WeaponHandler : MonoBehaviour {
 
         SetAllActiveFalseWeapons();
 
-        switch(wType){
-            case WeaponType.First:
-                FirstWeapon?.SetActive(true);
-                FirstWeapon.Draw();
-                break;
-            case WeaponType.Second:
-                SecondWeapon?.SetActive(true);
-                SecondWeapon.Draw();
-                break;
-            case WeaponType.Melee:
-                MeleeWeapon?.SetActive(true);
-                MeleeWeapon.Draw();
-                break;
-            case WeaponType.Granade:
-                WeaponData weaponData = GranadeWeapon?.WeaponData;
-                if(weaponData == null) return;
-                if(weaponData.currentAmmo <=0) {
+        if (weaponsMap.TryGetValue(wType, out WeaponBehavior weapon)) {
+            if (wType == WeaponType.Granade) {
+                WeaponData weaponData = weapon?.WeaponData;
+                if (weaponData == null || weaponData.currentAmmo <= 0) {
                     SoundFXManager.PlaySoundClipForce(weaponData.MagEmpty, transform);
-                    SelectWeaponType(defaultFirstDraw);
-                    break;
+                    SelectWeaponTypeForce(defaultFirstDraw);
+                    return;
                 }
-                GranadeWeapon?.SetActive(true);
-                GranadeWeapon.Draw();
-                break;
+            }
+            weapon?.SetActive(true);
+            weapon?.Draw();
         }
 
         currentWeapon = wType;
@@ -107,61 +80,28 @@ public class WeaponHandler : MonoBehaviour {
 
 
     private void ReloadWeapon(){
-        switch(currentWeapon){
-            case WeaponType.First:
-                FirstWeapon.Reload();
-                break;
-            case WeaponType.Second:
-                SecondWeapon.Reload();
-                break;
-            case WeaponType.Melee:
-                MeleeWeapon.Reload();
-                break;
-            case WeaponType.Granade:
-                GranadeWeapon.Reload();
-                break;
+        if (weaponsMap.TryGetValue(currentWeapon, out WeaponBehavior weapon)) {
+            weapon?.Reload();
         }
     }
 
     private void ShootWeapon(){
-        switch(currentWeapon){
-            case WeaponType.First:
-                FirstWeapon.Shoot();
-                break;
-            case WeaponType.Second:
-                SecondWeapon.Shoot();
-                break;
-            case WeaponType.Melee:
-                MeleeWeapon.Shoot();
-                break;
-            case WeaponType.Granade:
-                GranadeWeapon.Shoot();
-                break;
+        if (weaponsMap.TryGetValue(currentWeapon, out WeaponBehavior weapon)) {
+            weapon?.Shoot();
         }
     }
 
     private void ShootCancelWeapon(){
-        switch(currentWeapon){
-            case WeaponType.First:
-                FirstWeapon.ShootCancel();
-                break;
-            case WeaponType.Second:
-                SecondWeapon.ShootCancel();
-                break;
-            case WeaponType.Melee:
-                MeleeWeapon.ShootCancel();
-                break;
-            case WeaponType.Granade:
-                GranadeWeapon.ShootCancel();
-                break;
+        if (weaponsMap.TryGetValue(currentWeapon, out WeaponBehavior weapon)) {
+            weapon?.ShootCancel();
         }
     }
 
     private void SetAllActiveFalseWeapons(){
-        FirstWeapon?.SetActive(false);
-        SecondWeapon?.SetActive(false);
-        MeleeWeapon?.SetActive(false);
-        GranadeWeapon?.SetActive(false);
+        weaponsMap[WeaponType.First]?.SetActive(false);
+        weaponsMap[WeaponType.Second]?.SetActive(false);
+        weaponsMap[WeaponType.Melee]?.SetActive(false);
+        weaponsMap[WeaponType.Granade]?.SetActive(false);
     }
 
     public void First() => SelectWeaponType(WeaponType.First);
@@ -179,15 +119,12 @@ public class WeaponHandler : MonoBehaviour {
     public void ShootCancel() => ShootCancelWeapon();
 
     public void AddOneMag(){
-        FirstWeapon.AddOneMag();
-        SecondWeapon.AddOneMag();
+        weaponsMap[WeaponType.First].AddOneMag();
+        weaponsMap[WeaponType.Second].AddOneMag();
     }
     public WeaponData GetInfoWeapon(){
-        switch(currentWeapon){
-            case WeaponType.First: return FirstWeapon?.WeaponData;
-            case WeaponType.Second: return SecondWeapon?.WeaponData;
-            case WeaponType.Melee: return MeleeWeapon?.WeaponData;
-            case WeaponType.Granade: return GranadeWeapon?.WeaponData;
+        if (weaponsMap.TryGetValue(currentWeapon, out WeaponBehavior weapon)) {
+            return weapon?.WeaponData;
         }
         return null;
     }

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Player Info
   m_EditorClassIdentifier: 
   HealthLimit: 75
-  Health: 75
-  Money: 0
+  Health: 7280
+  Money: 450

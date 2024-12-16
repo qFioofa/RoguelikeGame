@@ -16,6 +16,6 @@ public class QuestionHandle : MonoBehaviour {
         CursorHandler.Hide();
         Time.timeScale = 1f;
         canvas.SetActive(false);
-        playerInfo.SetActive(false);
+        playerInfo.SetActive(true);
     }
 }
