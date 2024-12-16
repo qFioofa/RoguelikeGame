@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Granade
   m_EditorClassIdentifier: 
   WeaponType: 
-  damage: 0
+  damage: 10000000
   maxDistance: 0
   currentAmmo: 1
   backPackAmmo: 0

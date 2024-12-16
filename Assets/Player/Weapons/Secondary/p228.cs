@@ -22,6 +22,12 @@ public class p228 : WeaponBehavior {
             PlayedSoundOnReload = true;
             return;
         }
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.transform.forward, out hit, weaponData.maxDistance)) {
+            IDamageable target = hit.transform.GetComponent<IDamageable>();
+            if (target != null) target.TakeDamage(weaponData.damage);
+        }
+
         weaponData.currentAmmo = Mathf.Clamp(weaponData.currentAmmo-1,0, weaponData.magCapacity);
         LastShotTime = Time.time;
         animator.speed = 1f / weaponData.fireRate;

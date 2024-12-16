@@ -13,13 +13,18 @@ MonoBehaviour:
   m_Name: Knife
   m_EditorClassIdentifier: 
   WeaponType: Knife
-  damage: 0
-  maxDistance: 0
+  damage: 20
+  maxDistance: 5
   currentAmmo: 0
   backPackAmmo: 0
   magCapacity: 0
   fireRate: 0.5
   MagEmpty: {fileID: 0}
   Draw: {fileID: 8300000, guid: 77e8f7a5da7c18445b835ec3c069f63b, type: 3}
-  Reload: []
+  Reload:
+  - {fileID: 8300000, guid: 1a7b0cb3c655d3d488471c7a2be852ff, type: 3}
+  - {fileID: 8300000, guid: ed949222c39e55f4b8919f17b7189b0a, type: 3}
+  - {fileID: 8300000, guid: f0a23a5729ba4c84e973ff9cbc7166e8, type: 3}
+  - {fileID: 8300000, guid: f0a23a5729ba4c84e973ff9cbc7166e8, type: 3}
+  - {fileID: 8300000, guid: 04f3a6f481e3a6046a9baac83901742f, type: 3}
   Shoot: {fileID: 8300000, guid: 2d66df613a936da48b144d666fdc8fe0, type: 3}

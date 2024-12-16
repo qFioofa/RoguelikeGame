@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Runner : MonoBehaviour, IDamageable
+public class Runner : IDamageable
 {
     [Header("Настройки здоровья")]
     [SerializeField] private float HP = 100;
@@ -20,12 +20,17 @@ public class Runner : MonoBehaviour, IDamageable
 
     [SerializeField] private AudioClip reloadSound;
 
+    [SerializeField] private AudioClip[] takeDamageSound;
+    [SerializeField] private AudioClip[] dieSound;
+
     private Animator animator;
     private NavMeshAgent navAgent;
     private Transform target;
     private float nextFireTime = 0f;
     private int shotsFired = 0;
     private bool isReloading = false;
+
+    private bool dead = false;
 
     private void Start()
     {
@@ -44,21 +49,20 @@ public class Runner : MonoBehaviour, IDamageable
         }
     }
 
-    public void TakeDamage(int damageAmount)
+    public override void TakeDamage(float damageAmount)
     {
         HP -= damageAmount;
-
-        if (HP <= 0)
-        {
-            Die();
-        }
-        else
-        {
+        if (HP <= 0) Die();
+        else {
+            SoundFXManager.PlaySoundClipForce(takeDamageSound[Random.Range(0,takeDamageSound.Length-1)],transform);
             animator.SetTrigger("DAMAGE");
         }
     }
 
-    public void Die(){
+    public override void Die() {
+        if(dead) return;
+        dead = true;
+        SoundFXManager.PlaySoundClipForce(dieSound[Random.Range(0,dieSound.Length-1)],transform);
         animator.SetTrigger("DIE");
         navAgent.isStopped = true;
         Destroy(gameObject, 2f);

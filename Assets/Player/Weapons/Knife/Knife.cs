@@ -19,6 +19,16 @@ public class Knife : WeaponBehavior {
         LastShotTime = Time.time;
         animator.speed = 1f / weaponData.fireRate;
 
+        RaycastHit hit;
+        if (Physics.Raycast(Camera.main.transform.transform.position, Camera.main.transform.transform.forward, out hit, weaponData.maxDistance)) {
+
+            IDamageable target = hit.transform.GetComponent<IDamageable>();
+            if (target != null) {
+                SoundFXManager.PlaySoundClipForcePlayer(weaponData.Reload[Random.Range(0,weaponData.Reload.Length-1)]);
+                target.TakeDamage(weaponData.damage);
+            }
+        }
+
         animator.SetTrigger("MidSlash");
         base.ShootHandler();
     }

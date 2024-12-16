@@ -36,6 +36,8 @@ public class Granade : WeaponBehavior {
 
         GameObject granade = Instantiate(prefab, spawnPosition, _cam.transform.rotation);
 
+        granade.GetComponent<GrenadePhysics>().Damage = weaponData.damage;
+
         Rigidbody rb = granade.GetComponent<Rigidbody>();
 
         Vector3 dir = (_cam.transform.forward + throwDiraction).normalized;

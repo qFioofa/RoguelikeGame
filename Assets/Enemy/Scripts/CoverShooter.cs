@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class CoverShooter : MonoBehaviour, IDamageable
+public class CoverShooter : IDamageable
 {
     [Header("Настройки здоровья")]
     [SerializeField] private float HP = 100;
@@ -45,19 +45,24 @@ public class CoverShooter : MonoBehaviour, IDamageable
         coverExitTime = Time.time + timeInCover;
     }
 
-    public void TakeDamage(int damageAmount)
+    public override void TakeDamage(float damageAmount)
     {
         HP -= damageAmount;
 
         if (HP <= 0)
         {
-            animator.SetTrigger("DIE");
-            navAgent.isStopped = true;
+            Die();
         }
         else
         {
             animator.SetTrigger("DAMAGE");
         }
+    }
+
+    public override void Die(){
+        animator.SetTrigger("DIE");
+        navAgent.isStopped = true;
+        Destroy(gameObject, 2f);
     }
 
     private void Update()
@@ -176,6 +181,7 @@ public class CoverShooter : MonoBehaviour, IDamageable
 
 	    Invoke(nameof(FinishReloading), 2f);
 	}
+
 
 	private void FinishReloading()
 	{

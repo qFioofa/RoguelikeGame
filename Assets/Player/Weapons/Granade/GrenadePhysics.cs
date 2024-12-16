@@ -17,6 +17,11 @@ public class GrenadePhysics : MonoBehaviour {
 
     private float countDown = 0f;
     private bool hasExploded = false;
+    private float dmg = 0f;
+
+    public float Damage {
+        set { dmg = value; }
+    }
 
     void Start(){
         countDown = delay;
@@ -44,7 +49,7 @@ public class GrenadePhysics : MonoBehaviour {
 
         Explotion();
 
-        Destroy(gameObject);
+        Destroy(gameObject, 0.05f);
     }
 
     private void Explotion(){
@@ -53,7 +58,8 @@ public class GrenadePhysics : MonoBehaviour {
 
         foreach (var obj in colliders){
             if(obj.CompareTag("Enemy")){
-                Debug.Log("Enemy detected");
+                IDamageable target = obj.GetComponentInParent<IDamageable>();
+                if(target!= null) target.TakeDamage(dmg);
             }
         }
     }
