@@ -10,12 +10,12 @@ public class QuestionHandle : MonoBehaviour {
         CursorHandler.UnHide();
         Time.timeScale = 0f;
         canvas.SetActive(true);
-        playerInfo.SetActive(false);
+        if (playerInfo != null) playerInfo.SetActive(false);
     }
     public void Hide() {
         CursorHandler.Hide();
         Time.timeScale = 1f;
         canvas.SetActive(false);
-        playerInfo.SetActive(true);
+        if (playerInfo != null) playerInfo.SetActive(true);
     }
 }

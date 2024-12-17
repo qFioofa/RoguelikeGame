@@ -4,10 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class FullPauseScript : MonoBehaviour
-{
-
-
+public class FullPauseScript : MonoBehaviour {
     [Header("Canvases")]
     public GameObject pauseMenuCanvas;
     public GameObject InfoCanvas;
@@ -45,18 +42,18 @@ public class FullPauseScript : MonoBehaviour
     public void EnterPause() {
         CursorHandler.UnHide();
         Time.timeScale = 0f;
-        InfoCanvas.SetActive(false);
-        DefaultCanvas.SetActive(false);
-        pauseMenuCanvas.SetActive(true);
+        if(InfoCanvas!= null) InfoCanvas.SetActive(false);
+        if(DefaultCanvas!= null) DefaultCanvas.SetActive(false);
+        if(pauseMenuCanvas!= null) pauseMenuCanvas.SetActive(true);
         isPaused = true;
     }
 
     public void ResumeGame() {
         CursorHandler.Hide();
         Time.timeScale = 1f;
-        pauseMenuCanvas.SetActive(false);
-        DefaultCanvas.SetActive(true);
-        InfoCanvas.SetActive(true);
+        if(InfoCanvas!= null) InfoCanvas.SetActive(true);
+        if(DefaultCanvas!= null) DefaultCanvas.SetActive(true);
+        if(pauseMenuCanvas!= null) pauseMenuCanvas.SetActive(false);
         isPaused = false;
     }
 

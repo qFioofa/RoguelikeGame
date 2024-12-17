@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GrenadePhysics : MonoBehaviour {
-
     [SerializeField] private GameObject explotionEffect;
 
     [Header("Audio")]
@@ -13,7 +12,7 @@ public class GrenadePhysics : MonoBehaviour {
     [Header("Parameters")]
     [SerializeField] private float delay = 3f;
     [SerializeField] private float explotionEffectDelay = 1f;
-    [SerializeField] private float radius = 5f;
+    [SerializeField] private float radius = 10f;
 
     private float countDown = 0f;
     private bool hasExploded = false;

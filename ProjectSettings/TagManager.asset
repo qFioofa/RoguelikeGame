@@ -21,6 +21,9 @@ TagManager:
   - Wood
   - PlayerWeaponHandler
   - Enemy
+  - WeaponCamera
+  - Statistics
+  - SpawnPoints
   layers:
   - Default
   - TransparentFX

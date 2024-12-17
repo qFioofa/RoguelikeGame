@@ -122,6 +122,10 @@ public class WeaponHandler : MonoBehaviour {
         weaponsMap[WeaponType.First].AddOneMag();
         weaponsMap[WeaponType.Second].AddOneMag();
     }
+
+    public void AddGranade(int value){
+        weaponsMap[WeaponType.Granade].AddAmmo(value);
+    }
     public WeaponData GetInfoWeapon(){
         if (weaponsMap.TryGetValue(currentWeapon, out WeaponBehavior weapon)) {
             return weapon?.WeaponData;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class p228 : WeaponBehavior {
+    [SerializeField] private BulletTrailEffect bulletTrailEffect;
     public override void Update(){
         if(isShooting) ShootHandler();
         base.Update();
@@ -24,9 +25,14 @@ public class p228 : WeaponBehavior {
         }
         RaycastHit hit;
         if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.transform.forward, out hit, weaponData.maxDistance)) {
-            IDamageable target = hit.transform.GetComponent<IDamageable>();
+            IDamageable target = hit.transform.GetComponentInParent<IDamageable>();
             if (target != null) target.TakeDamage(weaponData.damage);
         }
+
+        Vector3 startPoint = Camera.main.transform.position;
+        Vector3 direction = Camera.main.transform.forward;
+        Vector3 endPoint = startPoint + direction * weaponData.maxDistance;
+        bulletTrailEffect.CreateBulletTrail(startPoint, endPoint);
 
         weaponData.currentAmmo = Mathf.Clamp(weaponData.currentAmmo-1,0, weaponData.magCapacity);
         LastShotTime = Time.time;

@@ -12,7 +12,7 @@ public class SaveSystem : JsonService {
         string path = Path.Combine(directoryPath, $"{fileName}{fileExtension}");
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(path, json);
-        Debug.Log($"Saved to {path}: {json}");
+        //Debug.Log($"Saved to {path}: {json}");
     }
 
     public void CreateDirectory(string relativePath){
@@ -31,7 +31,7 @@ public class SaveSystem : JsonService {
 
         string json = File.ReadAllText(path);
         T result = JsonUtility.FromJson<T>(json);
-        Debug.Log($"Loaded from {path}: {json}");
+        //Debug.Log($"Loaded from {path}: {json}");
         return result;
     }
 }

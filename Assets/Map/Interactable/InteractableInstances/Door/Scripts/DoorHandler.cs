@@ -7,6 +7,7 @@ public class DoorHandler : MonoBehaviour{
     [SerializeField] private Transform exit;
     [SerializeField] private AudioClip audioClip;
     private RoomHandler roomHandler;
+    private RoomDifficulty roomDifficulty;
     private Animator animator;
     private bool IsOpen;
     public bool isOpen{
@@ -16,7 +17,6 @@ public class DoorHandler : MonoBehaviour{
     public RoomHandler RoomHandler{
         get { return roomHandler; }
     }
-    private bool GeneratedRoom;
     void Start(){
         animator = GetComponent<Animator>();
         getRoomHandler();
@@ -29,12 +29,18 @@ public class DoorHandler : MonoBehaviour{
     }
     public void Close(){
         isOpen = false;
-        roomHandler.isRoomCleared = false;
+        roomHandler.isRoomCleaned = false;
         Animations();
         DeletePrevRoom();
+        StartLvl();
     }
     public void DeletePrevRoom(){
         roomHandler.DeletePrevRoom();
+    }
+
+    public void StartLvl() {
+        roomHandler.StartLvl(roomDifficulty.GetEnemyInfo());
+        roomDifficulty.restoreGranade();
     }
     private void GenerateRoom(){
         roomHandler.generateNextRoom(exit);
@@ -47,6 +53,7 @@ public class DoorHandler : MonoBehaviour{
 
     private void getRoomHandler(string RoomWrapperTag = "RoomWrapper"){
         roomHandler = GameObject.FindGameObjectWithTag(RoomWrapperTag).GetComponent<RoomHandler>();
+        roomDifficulty = GameObject.FindGameObjectWithTag(RoomWrapperTag).GetComponent<RoomDifficulty>();
     }
 
     private void InitExit(string DoorExitTag = "DoorExit"){

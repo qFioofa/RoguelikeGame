@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5295767379052146538, guid: 89c9ca18989bae64594b50bc05f4cd5a, type: 3}
       propertyPath: m_Name
-      value: Ammo
+      value: AmmoPickedUp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89c9ca18989bae64594b50bc05f4cd5a, type: 3}

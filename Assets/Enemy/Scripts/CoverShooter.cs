@@ -1,87 +1,51 @@
 using UnityEngine;
 using UnityEngine.AI;
+using System.Linq;
 
-public class CoverShooter : IDamageable
-{
-    [Header("Настройки здоровья")]
-    [SerializeField] private float HP = 100;
-
+public class CoverShooter : IDamageable { 
     [Header("Настройки стрельбы")]
     [SerializeField] private Transform shootPoint;
-    [SerializeField] private float shootDistance = 50f;
-    [SerializeField] private float fireRate = 1f;
-    [SerializeField] private int damage = 10;
-    [SerializeField] [Range(0f, 1f)] private float hitProbability = 0.7f;
-    [SerializeField] private int shotsBeforeReload = 5; // Количество выстрелов до перезарядки
 
     [Header("Настройки укрытий")]
-    [SerializeField] private Transform[] coverPoints; // Массив укрытий
-    [SerializeField] private float changeCoverDistance = 10f; // Расстояние до игрока для смены укрытия
-    [SerializeField] private float timeInCover = 3f; // Время, которое враг будет проводить в укрытии
-
-    private Animator animator;
-    private NavMeshAgent navAgent;
-    private Transform currentCover; // Текущее укрытие
-    private Transform target;
+    [SerializeField] private Transform[] coverPoints;
+    [SerializeField] private float changeCoverDistance = 10f;
+    [SerializeField] private float timeInCover = 3f;
+    private Transform currentCover;
     private float nextFireTime = 0f;
     private float coverExitTime = 0f;
 
-    private int shotsFired = 0;
-    private bool isReloading = false; // Флаг перезарядки
-
-    private void Start()
-    {
-        animator = GetComponent<Animator>();
-        navAgent = GetComponent<NavMeshAgent>();
-
-
-        GameObject playerObject = GameObject.FindGameObjectWithTag("Player");
-        if (playerObject != null)
-        {
-            target = playerObject.transform;
-        }
-
-        FindNewCover();
+    protected override void Start() {
+        base.Start();
+        FindCoverPoints(transform);
         coverExitTime = Time.time + timeInCover;
     }
 
-    public override void TakeDamage(float damageAmount)
-    {
-        HP -= damageAmount;
-
-        if (HP <= 0)
-        {
-            Die();
+    public void FindCoverPoints(Transform where) {
+        Transform propsParent = where.Find("Props");
+        
+        if (propsParent != null) {
+            coverPoints = propsParent.GetComponentsInChildren<Transform>();
+            Debug.Log(coverPoints.Length);
         }
-        else
-        {
-            animator.SetTrigger("DAMAGE");
-        }
-    }
-
-    public override void Die(){
-        animator.SetTrigger("DIE");
-        navAgent.isStopped = true;
-        Destroy(gameObject, 2f);
+        else coverPoints = new Transform[0];
     }
 
     private void Update()
     {
-        if (HP <= 0 || target == null || isReloading) return;
+        if (enemyInfo.HP <= 0 || target == null || isReloading) return;
 
         float distanceToTarget = Vector3.Distance(transform.position, target.position);
         if (distanceToTarget < changeCoverDistance)
         {
-            FindNewCover(); // Сменить укрытие
+            FindNewCover();
         }
 
-        // Если пришло время выходить из укрытия
+
         if (Time.time >= coverExitTime)
         {
             ExitCoverAndShoot();
         }
 
-        // Если укрытие найдено, враг движется к нему
         if (currentCover != null)
         {
             navAgent.SetDestination(currentCover.position);
@@ -94,10 +58,9 @@ public class CoverShooter : IDamageable
         float minDistance = Mathf.Infinity;
         Transform bestCover = null;
 
-        // Поиск ближайшего укрытия
         foreach (Transform cover in coverPoints)
         {
-            if (cover == currentCover) continue; // Пропускаем текущее укрытие
+            if (cover == currentCover) continue;
 
             float distance = Vector3.Distance(cover.position, target.position);
             if (distance > changeCoverDistance && distance < minDistance)
@@ -115,21 +78,15 @@ public class CoverShooter : IDamageable
         }
     }
 
-    private void ExitCoverAndShoot()
-    {
-
-        // Останавливаемся на месте для стрельбы
+    private void ExitCoverAndShoot(){
         navAgent.isStopped = true;
 
-        // Поворачиваемся к игроку
         RotateTowardsTarget();
-
-        // Стреляем
         TryShoot();
 
-        // Возвращаемся в укрытие после выстрела
-        coverExitTime = Time.time + timeInCover; // Устанавливаем время для следующего выхода
+        coverExitTime = Time.time + timeInCover;
 		navAgent.isStopped = false;
+        if(currentCover == null) return;
 		navAgent.SetDestination(currentCover.position);
 	}
 
@@ -137,56 +94,47 @@ public class CoverShooter : IDamageable
 	{
 		if (Time.time < nextFireTime || target == null) return;
 
-		nextFireTime = Time.time + fireRate;
+		nextFireTime = Time.time + enemyInfo.fireRate;
 
 		animator.SetTrigger("Shoot");
 
 		shotsFired++;
 
-		if (shotsFired >= shotsBeforeReload)
+		if (shotsFired >= enemyInfo.shotsBeforeReload)
 		{
 			StartReloading();
 			return;
 		}
 
-		if (Random.value > hitProbability) return;
+		if (Random.value < enemyInfo. hitProbability) return;
 
 		float distanceToTarget = Vector3.Distance(transform.position, target.position);
-		if (distanceToTarget > shootDistance) return;
+		if (distanceToTarget > enemyInfo.shootDistance) return;
 
 		Vector3 directionToTarget = (target.position - shootPoint.position).normalized;
 		Ray ray = new Ray(shootPoint.position, directionToTarget);
 		RaycastHit hitInfo;
 
-		Debug.DrawRay(shootPoint.position, directionToTarget * shootDistance, Color.red, 1f);
+		Debug.DrawRay(shootPoint.position, directionToTarget * enemyInfo.shootDistance, Color.red, 1f);
 
-		if (Physics.Raycast(ray, out hitInfo, shootDistance))
+		if (Physics.Raycast(ray, out hitInfo, enemyInfo.shootDistance))
 		{
 			if (hitInfo.collider.CompareTag("Player"))
 			{
 				PlayerInfo playerInfo = hitInfo.collider.GetComponent<PlayerInfo>();
 				if (playerInfo != null)
 				{
-					playerInfo.Damage(damage);
+					playerInfo.Damage(enemyInfo.damage);
 				}
 			}
 		}
 	}
 
-	private void StartReloading()
-	{
+	private void StartReloading() {
 	    isReloading = true;
 	    animator.SetTrigger("Reload");
 
-
 	    Invoke(nameof(FinishReloading), 2f);
-	}
-
-
-	private void FinishReloading()
-	{
-	    isReloading = false;
-	    shotsFired = 0;
 	}
 
 	private void RotateTowardsTarget()

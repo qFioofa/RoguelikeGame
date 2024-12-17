@@ -5,6 +5,11 @@ using UnityEngine;
 public class PlayerLook : MonoBehaviour{
     [Header("Camera")]
     [SerializeField] private Camera Camera;
+
+    private bool canLook = true;
+    public bool CanLook{
+        set{ canLook = value; }
+    }
     public Camera Camera_{
         get{ return Camera; }
     }
@@ -21,6 +26,7 @@ public class PlayerLook : MonoBehaviour{
         ySensitivity = FullSettingsScript.sensitivityY;
     }
     public void ProcessLook(Vector2 input){
+        if(!canLook) return;
         xRotation -= input.y * Time.deltaTime * ySensitivity;
         xRotation = Mathf.Clamp(xRotation,downAngleLimit,upAngleLimit);
 

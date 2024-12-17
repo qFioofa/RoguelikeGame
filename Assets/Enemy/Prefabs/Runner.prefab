@@ -5154,6 +5154,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.25948682
       objectReference: {fileID: 0}
+    - target: {fileID: 3844396250613847918, guid: 798c05ee1e2530b4ebb1d9d7e5a2c6a9, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 3844536396303336797, guid: 798c05ee1e2530b4ebb1d9d7e5a2c6a9, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.99999994
@@ -11916,15 +11920,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8131462640605833815, guid: 798c05ee1e2530b4ebb1d9d7e5a2c6a9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.13
+      value: 3.6562195
       objectReference: {fileID: 0}
     - target: {fileID: 8131462640605833815, guid: 798c05ee1e2530b4ebb1d9d7e5a2c6a9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.88
+      value: 5.1116714
       objectReference: {fileID: 0}
     - target: {fileID: 8131462640605833815, guid: 798c05ee1e2530b4ebb1d9d7e5a2c6a9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.3
+      value: 4.6618347
       objectReference: {fileID: 0}
     - target: {fileID: 8131462640605833815, guid: 798c05ee1e2530b4ebb1d9d7e5a2c6a9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -12740,7 +12744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8904481353477386477, guid: 798c05ee1e2530b4ebb1d9d7e5a2c6a9, type: 3}
       propertyPath: m_Name
-      value: FreeTestCharacterAsunaMasterPrefab
+      value: Runner
       objectReference: {fileID: 0}
     - target: {fileID: 8912895190014347884, guid: 798c05ee1e2530b4ebb1d9d7e5a2c6a9, type: 3}
       propertyPath: m_LocalScale.x
@@ -13404,11 +13408,44 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 798c05ee1e2530b4ebb1d9d7e5a2c6a9, type: 3}
+--- !u!1 &1108126011885069811 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3844396250613847918, guid: 798c05ee1e2530b4ebb1d9d7e5a2c6a9, type: 3}
+  m_PrefabInstance: {fileID: 4195895499685442205}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1632050877
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108126011885069811}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4524207509537376650, guid: d7a2370cd73c52d4d943e64ade1151ef, type: 3}
 --- !u!1 &4731526347874288240 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8904481353477386477, guid: 798c05ee1e2530b4ebb1d9d7e5a2c6a9, type: 3}
   m_PrefabInstance: {fileID: 4195895499685442205}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &134038331
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4731526347874288240}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4524207509537376650, guid: d7a2370cd73c52d4d943e64ade1151ef, type: 3}
 --- !u!114 &884468795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13421,15 +13458,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851069e8b3189534b8eeeb78e9923710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 100
-  shootPoint: {fileID: 340797721}
-  shootDistance: 50
-  fireRate: 1
-  damage: 10
-  hitProbability: 0.7
-  shotsBeforeReload: 5
   shotSound: {fileID: 8300000, guid: 47c189ba433cc2a45ae806b1b212fee6, type: 3}
-  reloadSound: {fileID: 8300000, guid: 1d169c2218d4cd346bd09aa068ece1c1, type: 3}
+  reloadSound:
+  - {fileID: 8300000, guid: 11ad64b64e155574ca7cc673647e8636, type: 3}
+  - {fileID: 8300000, guid: dd3c191d1fa8644498d0e2fd2fde8c7a, type: 3}
+  - {fileID: 8300000, guid: 08d5fb42e6e3ecf449a7915a20d714ad, type: 3}
+  - {fileID: 8300000, guid: 1d169c2218d4cd346bd09aa068ece1c1, type: 3}
+  takeDamageSound:
+  - {fileID: 8300000, guid: 208708e83247e4048a4bba8f2c5f0eb6, type: 3}
+  - {fileID: 8300000, guid: 7ce472fc8fe4389418568942041419ba, type: 3}
+  - {fileID: 8300000, guid: d9e571b15f59c5244a97fe4110066a4d, type: 3}
+  dieSound:
+  - {fileID: 8300000, guid: 488324e81ddf19e44adcbb0048d391dc, type: 3}
+  - {fileID: 8300000, guid: 60eb30397a0f56241add94c90a360f09, type: 3}
+  - {fileID: 8300000, guid: 608bb077fc8eb6243a259dc7d3800fa4, type: 3}
+  - {fileID: 8300000, guid: 8d8937145909428478a457612efa29a7, type: 3}
+  - {fileID: 8300000, guid: 7c1dfe000eb51cf4a8041bb6c40aa406, type: 3}
+  - {fileID: 8300000, guid: 132542b833047b14bba44f2fa8297eae, type: 3}
+  MoneyPrefab: {fileID: 8312562436381314478, guid: b58951f47e2ea7e4da0f8b863322ff40, type: 3}
+  HealthPrefab: {fileID: 4528331382415818559, guid: 42bf1d834ebf2714dba346f3e38da7b6, type: 3}
+  AmmoPrefab: {fileID: 3949697164618567579, guid: 97378ab8057ebc9438b2da443a6db625, type: 3}
+  shootPoint: {fileID: 340797721}
+  shotsBeforeReload: 5
 --- !u!195 &884468796
 NavMeshAgent:
   m_ObjectHideFlags: 0

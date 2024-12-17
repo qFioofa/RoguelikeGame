@@ -39,7 +39,7 @@ public class WeaponBehavior : MonoBehaviour {
         isShooting = false;
         PlayedSoundOnReload = false;
     }
-
+    public virtual void AddAmmo(int value) {}
     public virtual void Reload() {}
 
     public virtual void ReloadHandler() {

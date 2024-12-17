@@ -36,12 +36,12 @@ public class InputManager : MonoBehaviour{
         playerLook.ProcessLook(onFootActions.Look.ReadValue<Vector2>());
     }
 
-    private void OnEnable(){
+    public void OnEnable(){
         onFootActions.Enable();
         weaponsActions.Enable();
     }
 
-    private void OnDisable(){
+    public void OnDisable(){
         onFootActions.Disable();
         weaponsActions.Disable();
     }

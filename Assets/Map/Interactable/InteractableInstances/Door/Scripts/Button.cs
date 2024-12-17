@@ -14,7 +14,7 @@ public class Button : Interactable{
         doorHandler = transform.parent.GetComponent<DoorHandler>();
     }
     protected override void Interact(){
-        if(Triggered || doorHandler.RoomHandler.isRoomGenerated || !doorHandler.RoomHandler.isRoomCleared) {
+        if(Triggered || doorHandler.RoomHandler.isRoomGenerated || !doorHandler.RoomHandler.isRoomCleaned) {
             AlreadyOpened();
             return;
         }

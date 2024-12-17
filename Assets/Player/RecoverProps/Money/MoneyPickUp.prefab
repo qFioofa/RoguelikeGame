@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4471615756548398157, guid: 26aea3eb7fb5dc9418eed7c69f079a65, type: 3}
       propertyPath: m_Name
-      value: Money
+      value: MoneyPickUp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26aea3eb7fb5dc9418eed7c69f079a65, type: 3}
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pickUpSound: {fileID: 8300000, guid: 9aed4746333ab10459f09b1d9b124d7e, type: 3}
   playerInfo: {fileID: 0}
-  value: 50
+  value: 25
 --- !u!114 &512107749
 MonoBehaviour:
   m_ObjectHideFlags: 0

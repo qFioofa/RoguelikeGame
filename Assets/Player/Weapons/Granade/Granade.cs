@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.Search;
 using UnityEngine;
 
 public class Granade : WeaponBehavior {
@@ -24,6 +23,10 @@ public class Granade : WeaponBehavior {
     public override void Update(){}
 
     public override void Shoot(){
+        if(weaponData.currentAmmo <=0){
+            SoundFXManager.PlaySoundClipForcePlayer(weaponData.MagEmpty);
+            return;
+        }
         animator.SetTrigger("PullIn");
     }
 
@@ -31,7 +34,12 @@ public class Granade : WeaponBehavior {
         animator.SetTrigger("Trow");
     }
 
+    public override void AddAmmo(int value) {
+        weaponData.currentAmmo = value;
+    }
     public void InitPythicalGranade(){
+        weaponData.currentAmmo = Mathf.Clamp(weaponData.currentAmmo - 1, 0, weaponData.magCapacity);
+
         Vector3 spawnPosition = transform.position + offset + _cam.transform.forward;
 
         GameObject granade = Instantiate(prefab, spawnPosition, _cam.transform.rotation);
