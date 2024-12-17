@@ -20,6 +20,9 @@ public class Granade : WeaponBehavior {
         weaponHandler = GameObject.FindWithTag("Player")?.GetComponent<WeaponHandler>();
     }
 
+    protected override void InitStartValues(){
+        weaponData.currentAmmo = 2;
+    }
     public override void Update(){}
 
     public override void Shoot(){

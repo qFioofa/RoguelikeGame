@@ -24,7 +24,12 @@ public class WeaponBehavior : MonoBehaviour {
 
     protected virtual void Start() {
         LastShotTime = Time.time;
+        InitStartValues();
         animator = GetComponent<Animator>();
+    }
+
+    protected virtual void InitStartValues(){
+        weaponData.InitStartValues();
     }
 
     public virtual void Update() {}

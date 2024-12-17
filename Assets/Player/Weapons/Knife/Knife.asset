@@ -28,3 +28,4 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f0a23a5729ba4c84e973ff9cbc7166e8, type: 3}
   - {fileID: 8300000, guid: 04f3a6f481e3a6046a9baac83901742f, type: 3}
   Shoot: {fileID: 8300000, guid: 2d66df613a936da48b144d666fdc8fe0, type: 3}
+  StartBackpackAmmo: 2

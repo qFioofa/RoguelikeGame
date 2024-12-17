@@ -21,6 +21,12 @@ public class WeaponData : ScriptableObject {
     public AudioClip Draw;
     public AudioClip[] Reload;
     public AudioClip Shoot;
+    [Header("Persent")]
+    public int StartBackpackAmmo = 2;
+    public void InitStartValues(){
+        currentAmmo = magCapacity;
+        backPackAmmo = StartBackpackAmmo*magCapacity;
+    }
 
     public static WeaponDataAttributes FromScriptableObject(WeaponData saveData) {
         return new WeaponDataAttributes {
@@ -84,6 +90,7 @@ public class WeaponDataAttributes {
     public AudioClip Draw;
     public AudioClip[] Reload;
     public AudioClip Shoot;
+
     public static WeaponDataAttributes FromScriptableObject(WeaponData saveData) {
         return new WeaponDataAttributes {
             WeaponType = saveData.WeaponType,

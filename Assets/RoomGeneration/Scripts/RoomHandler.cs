@@ -4,6 +4,7 @@ using UnityEngine;
 using RoomGeneratorWrapper;
 using System.Linq;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class RoomHandler : MonoBehaviour{
     private RoomGenerator roomGenerator = new RoomGenerator();
@@ -18,15 +19,16 @@ public class RoomHandler : MonoBehaviour{
     [Header("Enemy Generation")]
     [SerializeField] private GameObject enemyTypeA; 
     [SerializeField] private GameObject enemyTypeB; 
-    [SerializeField] private int numberOfEnemiesTypeA = 4; 
-    [SerializeField] private int numberOfEnemiesTypeB = 3;
+    [SerializeField] public int numberOfEnemiesTypeA = 1; 
+    [SerializeField] public int numberOfEnemiesTypeB = 1;
     private Transform[] spawnPoints; 
     private HashSet<int> occupiedSpawnPoints;
-    private List<GameObject> EnemyHolder = new List<GameObject>();
+    private int totalEnemies = 0;
 
     [Header("Sounds")]
     [SerializeField] private AudioClip startOfLvlSound; 
     [SerializeField] private AudioClip lvlFinished;
+    public static UnityEvent<int> RoomCleaned = new UnityEvent<int>();
 
     public bool isRoomGenerated{
         get{ return IsRoomGenerated; }
@@ -42,6 +44,7 @@ public class RoomHandler : MonoBehaviour{
         get{ return currentRoom; }
     }
     void Start(){
+        Seed = int.Parse(FullSettingsScript.seed);
         isRoomCleaned = true;
         setWrapper();
         roomGenerator.Setup(Seed);
@@ -104,24 +107,21 @@ public class RoomHandler : MonoBehaviour{
             if(enemy.GetComponent<CoverShooter>() != null){
                 enemy.GetComponent<CoverShooter>().FindCoverPoints(nextRoom.transform);
             }
-            EnemyHolder.Add(enemy);
+            ++totalEnemies;
         }
     }
 
-    public void IsRoomCleaned(int _){
-        if(!IsCleanedRoomCheck()) return;
+    public void IsRoomCleaned(int deadCount){
+        if(!IsCleanedRoomCheck(deadCount)) return;
 
-        EnemyHolder.Clear();
+        totalEnemies = 0;
         isRoomCleaned = true;
+        RoomCleaned.Invoke(1);
         SoundFXManager.PlaySoundClipForcePlayer(lvlFinished);
     }
-    private bool IsCleanedRoomCheck(){
-        foreach(GameObject enemy in EnemyHolder){
-            if(enemy!= null){
-                return false;
-            }
-        }
-        return true;
+    private bool IsCleanedRoomCheck(int deadCount){
+        totalEnemies -= deadCount;
+        return totalEnemies<=0;
     }
     public void DeletePrevRoom(){
         Destroy(previusRoom);

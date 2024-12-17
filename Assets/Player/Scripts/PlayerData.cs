@@ -7,6 +7,11 @@ public class PlayerData : ScriptableObject {
     public float HealthLimit = 100f;
     public float Health = 75f;
     public int Money = 0;
+    public float StartHp = 0.75f;
+
+    public void InitStartValues(){
+        Health = (int)(HealthLimit*StartHp);
+    }
 
     public static PlayerDataAttributes FromScriptableObject(PlayerData saveData) {
         return new PlayerDataAttributes {

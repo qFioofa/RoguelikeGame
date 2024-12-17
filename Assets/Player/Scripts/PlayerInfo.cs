@@ -20,6 +20,7 @@ public class PlayerInfo : MonoBehaviour
         weaponHandler = GetComponent<WeaponHandler>();
         mainCameraTransform = Camera.main.transform;
         rigidbodyCamera = Camera.main.GetComponent<Rigidbody>();
+        playerData.InitStartValues();
     }
 
     public int Money {

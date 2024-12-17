@@ -8,6 +8,9 @@ public class StatisticCollecter : MonoBehaviour {
     private int enemyKilled = 0;
     private int moneyEarned = 0;
     private int lvlCompleted = 0;
+    public int LvlCompleted{
+        get { return lvlCompleted; }
+    }
 
     [Header("Health")]
     private int healthUsed = 0;
@@ -33,12 +36,14 @@ public class StatisticCollecter : MonoBehaviour {
 
     private void OnEnable() {
         HealPickUp.OnHealthPickedUp.AddListener(UpdateHealth); 
-        MoneyPickUp.OnMoneyPickedUp.AddListener(UpdateMoneyEarned); 
+        MoneyPickUp.OnMoneyPickedUp.AddListener(UpdateMoneyEarned);
+        RoomHandler.RoomCleaned.AddListener(UpdateLvlCompleted); 
         IDamageable.DeadCount.AddListener(UpdateEnemyKilled);
     }
     private void OnDisable() { 
         HealPickUp.OnHealthPickedUp.RemoveListener(UpdateHealth); 
         MoneyPickUp.OnMoneyPickedUp.RemoveListener(UpdateMoneyEarned);
+        RoomHandler.RoomCleaned.RemoveListener(UpdateLvlCompleted); 
         IDamageable.DeadCount.RemoveListener(UpdateEnemyKilled); 
     } 
 }

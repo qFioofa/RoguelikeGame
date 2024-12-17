@@ -12,7 +12,7 @@ public class FullSettingsScript : MonoBehaviour {
     public Slider sensitivityXSlider;
     public Slider sensitivityYSlider;
 
-    static public string seed = "";
+    static public string seed = "12";
     public static float sensitivityX = 1f;
     public static float sensitivityY = 1f;
 

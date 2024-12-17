@@ -15,8 +15,8 @@ MonoBehaviour:
   WeaponType: Galil
   damage: 10
   maxDistance: 100
-  currentAmmo: 15
-  backPackAmmo: 10002
+  currentAmmo: 4
+  backPackAmmo: 30
   magCapacity: 15
   fireRate: 0.1
   MagEmpty: {fileID: 8300000, guid: 0ec3ef77a375cf94e88e91b5c92f8dd8, type: 3}
@@ -26,3 +26,4 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ad59d22511dbb644e86faaf896edab09, type: 3}
   - {fileID: 8300000, guid: dda7cc7a2936ef7478725b0ede941f6f, type: 3}
   Shoot: {fileID: 8300000, guid: 16fcac3a516874942a4591579858a0b0, type: 3}
+  StartBackpackAmmo: 2

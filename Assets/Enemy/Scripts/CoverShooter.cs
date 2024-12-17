@@ -25,32 +25,33 @@ public class CoverShooter : IDamageable {
         
         if (propsParent != null) {
             coverPoints = propsParent.GetComponentsInChildren<Transform>();
-            Debug.Log(coverPoints.Length);
         }
         else coverPoints = new Transform[0];
     }
 
     private void Update()
     {
-        if (enemyInfo.HP <= 0 || target == null || isReloading) return;
+        if (target == null) {
+            FindPlayer();
+            return;
+        }
+
+        if (enemyInfo.HP <= 0 || isReloading) return;
 
         float distanceToTarget = Vector3.Distance(transform.position, target.position);
-        if (distanceToTarget < changeCoverDistance)
-        {
-            FindNewCover();
+
+        if (distanceToTarget < 7.5f) {
+            Vector3 directionAwayFromPlayer = (transform.position - target.position).normalized;
+            Vector3 newDestination = transform.position + directionAwayFromPlayer * 7.5f;
+            navAgent.SetDestination(newDestination);
+            animator.SetBool("isWalking", true);
+            return;
+        } else {
+            navAgent.SetDestination(target.position);
+            animator.SetBool("isWalking", true);
         }
 
-
-        if (Time.time >= coverExitTime)
-        {
-            ExitCoverAndShoot();
-        }
-
-        if (currentCover != null)
-        {
-            navAgent.SetDestination(currentCover.position);
-            animator.SetBool("isWalking", navAgent.velocity.magnitude > 0.1f);
-        }
+        TryShoot();
     }
 
     private void FindNewCover()

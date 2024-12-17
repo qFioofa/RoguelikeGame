@@ -474,6 +474,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 770132565790432013, guid: a56d38388375ffb42ac2b1fb7a60932f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.689
+      objectReference: {fileID: 0}
     - target: {fileID: 3089189096325702621, guid: a56d38388375ffb42ac2b1fb7a60932f, type: 3}
       propertyPath: doorHandler
       value: 
@@ -498,6 +502,10 @@ PrefabInstance:
       propertyPath: enemyTypeB
       value: 
       objectReference: {fileID: 4731526347874288240, guid: aec53f74b4bb224459352b013f9601c3, type: 3}
+    - target: {fileID: 9108299689309852948, guid: a56d38388375ffb42ac2b1fb7a60932f, type: 3}
+      propertyPath: lvlFinished
+      value: 
+      objectReference: {fileID: 8300000, guid: 7e1ada2ad2c82684581cff35f794a4d6, type: 3}
     - target: {fileID: 9108299689309852948, guid: a56d38388375ffb42ac2b1fb7a60932f, type: 3}
       propertyPath: startOfLvlSound
       value: 
@@ -570,6 +578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmgMtp: 1.01
-  hpMtp: 1.01
+  hpAdd: 5
+  hp10lvl: 10
   granadeRecover: 2
   ammoCover: {fileID: 8300000, guid: 68d5da0770958384b80e9e38f229ad75, type: 3}
