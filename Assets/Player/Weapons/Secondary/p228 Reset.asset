@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bfce0138fe733c48a5b631823c659dd, type: 3}
+  m_Name: p228 Reset
+  m_EditorClassIdentifier: 
+  WeaponType: p228
+  damage: 5
+  maxDistance: 100
+  currentAmmo: 7
+  backPackAmmo: 21
+  magCapacity: 7
+  fireRate: 0.25
+  MagEmpty: {fileID: 8300000, guid: 0ec3ef77a375cf94e88e91b5c92f8dd8, type: 3}
+  Draw: {fileID: 8300000, guid: 5ad3bca7a4bb3c44dadfc023132c0124, type: 3}
+  Reload:
+  - {fileID: 8300000, guid: 8a4460254597c0d47b907c028804d758, type: 3}
+  - {fileID: 8300000, guid: 26a7a221db92dcd4386debbb44b1b150, type: 3}
+  - {fileID: 8300000, guid: 7b6ecc595e0a3d34bb1cf2b3f500224c, type: 3}
+  - {fileID: 8300000, guid: 40e09c14cd9c4164d8b6e2c24705afdb, type: 3}
+  Shoot: {fileID: 8300000, guid: b918e33cd761a354d952e9bdbed61c4c, type: 3}
